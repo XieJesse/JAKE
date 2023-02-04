@@ -1,5 +1,5 @@
 import sqlite3
-import datatime
+import datetime
 
 MAIN_DB = "data.db"
 
@@ -72,7 +72,7 @@ def downvote(user,content,datetime):
     database.commit()
 
 
-def upvote()(user,content,datetime):
+def upvote(user,content,datetime):
     c.execute("SELECT * FROM POSTS WHERE USER = (?) AND CONTENT = (?) AND DATETIME = (?)", (user,content,datetime))
     current_karma = c.fetchone()[2]
     c.execute("UPDATE POSTS SET KARMA = (?) WHERE USER = (?) AND CONTENT = (?) AND DATETIME = (?)", (current_karma+1,user,content,datetime))
