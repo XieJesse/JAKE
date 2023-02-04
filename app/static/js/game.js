@@ -1,25 +1,15 @@
-var canvas = document.createElement("canvas");
-canvas.width = window.innerWidth * 0.6;
-canvas.height = window.innerHeight * 0.8;
+var c;
+var ctx;
 
-canvas.id = "CursorLayer";
-canvas.style.zIndex = 8;
-canvas.style.display = "block";
-canvas.style.position = "absolute";
-canvas.style.border = "1px solid";
+function initialize() {
+  c = document.getElementById("game");
+  ctx = c.getContext("2d");
 
-var body = document.getElementsByTagName("body")[0];
-body.appendChild(canvas);
+  c.width = window.innerWidth * 0.6;
+  c.height = window.innerHeight * 0.8;
+  c.style.border = "1px solid";
+  c.style.backgroundColor = "#B4ABFC";
+}
 
-cursorLayer = document.getElementById("CursorLayer");
-console.log(cursorLayer);
-
-var ctx = canvas.getContext("2d");
-ctx.font = "30px Comic Sans MS";
-ctx.fillStyle = "red";
-ctx.textAlign = "center";
-ctx.fillText(
-  "Train to Become the Rizzard of Oz",
-  canvas.width / 2,
-  canvas.height / 3
-);
+initialize();
+setup();
