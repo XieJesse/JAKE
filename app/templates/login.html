@@ -1,16 +1,17 @@
+{% extends 'base.html' %}
 {% block head %}
   <link href="/static/css/style.css" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
   <div class = "container">
-    <p> yo </p>
+    <p>Login</p>
     <h1> {{ error }} </h1>
     <form class="login-container" action="/login" method="POST">
       <input name="username" class="input" type="text" placeholder="Username">
       <input name="password" class="input" type="password" placeholder="Password">
-      <button type="submit" class="submit-button">Login</button>
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
     </form>
-    <a href="/register" class="link">Register instead</a>
+    <a href="/register" class="link">Register</a>
   </div>
 {% endblock %}
