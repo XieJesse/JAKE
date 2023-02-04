@@ -1,13 +1,13 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 import db
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 def home():
     return render_template("index.html")
 
-@app.route("/login")
+@app.route("/login", methods=['GET', 'POST'])
 def login():
     if (request.method == "POST"):
         username = request.form['username']
@@ -23,13 +23,13 @@ def login():
     else:
         return render_template("login.html")
 
-@app.route("/register")
+@app.route("/register", methods=['GET', 'POST'])
 def register():
     if (request.method == "POST"):
         username = request.form['username']
         password = request.form['password']
         repeat_password = request.form['repeat_password']
-        if not (db.user_exists(username)):
+        if (db.user_exists(username)):
             return render_template("register.html", error = "Username is already taken.")
         elif (password != repeat_password):
             return render_template("register.html", error = "Password must be alphanumeric.")
@@ -38,13 +38,13 @@ def register():
         elif not (password.isalnum):
             return render_template("register.html", error = "Passwords do not match.")
         else:
+            db.add_user(username,password,'test')
             session['username'] = username
             return redirect("/game")
     else:
-        return render_template("login.html")
-    return render_template("register.html")
+        return render_template("register.html")
 
-@app.route("/logout")
+@app.route("/logout", methods=['GET', 'POST'])
 def logout():
     if request.method == 'GET':
         if ('username' in session.keys()):
@@ -53,15 +53,15 @@ def logout():
     else:
         return redirect("/")
 
-@app.route("/profile")
+@app.route("/profile", methods=['GET', 'POST'])
 def profile():
     return render_template("profile.html")
 
-@app.route("/game")
+@app.route("/game", methods=['GET', 'POST'])
 def game():
     return render_template("game.html")
 
-@app.route("/collection")
+@app.route("/collection", methods=['GET', 'POST'])
 def collection():
     data = db.get_ranked_posts()
     return render_template("collection.html", data = data)

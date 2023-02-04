@@ -1,0 +1,16 @@
+{% block head %}
+  <link href="/static/css/style.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+  <div class = "container">
+    <p> yo </p>
+    <h1> {{ error }} </h1>
+    <form class="register-container" action="/register" method="POST">
+      <input name="username" class="input" type="text" placeholder="Username">
+      <input name="password" class="input" type="text" placeholder="Password">
+      <input name="repeat_password" class="input" type="text" placeholder="Re-enter Password">
+      <button type="submit" class="submit-button">Register</button>
+    </form>
+  </div>
+{% endblock %}
