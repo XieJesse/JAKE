@@ -33,32 +33,38 @@ def login():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    if (request.method == "POST"):
-        username = request.form['username']
-        password = request.form['password']
-        repeat_password = request.form['repeat_password']
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+        repeat_password = request.form["repeat_password"]
         image_formats = ("image/png", "image/jpeg", "image/jpg")
-        image_url = request.form['image_url']
-        if (image_url == ""):
+        image_url = request.form["image_url"]
+        if image_url == "":
             image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
         url_valid = True
         try:
-            url_valid = (requests.head(image_url).headers["content-type"] in image_formats)
+            url_valid = (
+                requests.head(image_url).headers["content-type"] in image_formats
+            )
         except:
             url_valid = False
-        if (db.user_exists(username)):
-            return render_template("register.html", error = "Username is already taken.")
-        elif (password != repeat_password):
-            return render_template("register.html", error = "Password must be alphanumeric.")
-        elif (len(password) < 8):
-            return render_template("register.html", error = "Password must be at least 8 characters.")
+        if db.user_exists(username):
+            return render_template("register.html", error="Username is already taken.")
+        elif password != repeat_password:
+            return render_template(
+                "register.html", error="Password must be alphanumeric."
+            )
+        elif len(password) < 8:
+            return render_template(
+                "register.html", error="Password must be at least 8 characters."
+            )
         elif not (password.isalnum):
-            return render_template("register.html", error = "Passwords do not match.")
+            return render_template("register.html", error="Passwords do not match.")
         elif not (url_valid):
-            return render_template("register.html", error = "Image URL is not valid.")
+            return render_template("register.html", error="Image URL is not valid.")
         else:
-            db.add_user(username,password,image_url)
-            session['username'] = username
+            db.add_user(username, password, image_url)
+            session["username"] = username
             return redirect("/game")
     else:
         return render_template("register.html")
@@ -91,21 +97,26 @@ def collection():
 
 
 def getWords():
+    words = []
     with app.open_resource("static/data/vals.json") as f:
         vals = json.load(f)
         random.shuffle(vals["nouns"])
-        for i in range(len(vals["nouns"]) - 4):
+        for i in range(len(vals["nouns"]) - 3):
             vals["nouns"].pop()
         random.shuffle(vals["isarephrase"])
-        for i in range(len(vals["isarephrase"]) - 2):
+        for i in range(len(vals["isarephrase"]) - 1):
             vals["isarephrase"].pop()
         random.shuffle(vals["verbs"])
-        for i in range(len(vals["verbs"]) - 2):
+        for i in range(len(vals["verbs"]) - 1):
             vals["verbs"].pop()
         random.shuffle(vals["endings"])
-        for i in range(len(vals["endings"]) - 2):
+        for i in range(len(vals["endings"]) - 1):
             vals["endings"].pop()
-    return vals
+        for i in vals.keys():
+            for j in vals[i]:
+                words.append(j)
+    random.shuffle(words)
+    return words
 
 
 if __name__ == "__main__":
