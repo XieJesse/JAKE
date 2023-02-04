@@ -1,4 +1,5 @@
 import sqlite3
+import datatime
 
 MAIN_DB = "data.db"
 
@@ -20,13 +21,12 @@ c.execute("""
     );""")
 
 database.commit()
-database.close()
 
 def add_user(username,password,avatar_url):
     c.execute("INSERT INTO USERS (USERNAME,PASSWORD,AVATAR_URL) VALUES (?,?,?)",(username,password,avatar_url))
 
 def add_post(user,content,karma):
-    c.execute("INSERT INTO POSTS (USER,CONTENT,KARMA) VALUES (?,?,?)",(user,content,karma))
+    c.execute("INSERT INTO POSTS (USER,CONTENT,KARMA,DATETIME) VALUES (?,?,?,?)",(user,content,karma,datetime.now().strftime("%d/%m/%Y %H:%M")))
 
 def verify_user(username,password):
     # returns 0 if username and password are correct
@@ -64,3 +64,16 @@ def get_ranked_posts():
             posts[i] = posts[current_post_index]
             posts[current_post_index] = temp
     return posts
+
+def downvote(user,content,datetime):
+    c.execute("SELECT * FROM POSTS WHERE USER = (?) AND CONTENT = (?) AND DATETIME = (?)", (user,content,datetime))
+    current_karma = c.fetchone()[2]
+    c.execute("UPDATE POSTS SET KARMA = (?) WHERE USER = (?) AND CONTENT = (?) AND DATETIME = (?)", (current_karma-1,user,content,datetime))
+    database.commit()
+
+
+def upvote()(user,content,datetime):
+    c.execute("SELECT * FROM POSTS WHERE USER = (?) AND CONTENT = (?) AND DATETIME = (?)", (user,content,datetime))
+    current_karma = c.fetchone()[2]
+    c.execute("UPDATE POSTS SET KARMA = (?) WHERE USER = (?) AND CONTENT = (?) AND DATETIME = (?)", (current_karma+1,user,content,datetime))
+    database.commit()
