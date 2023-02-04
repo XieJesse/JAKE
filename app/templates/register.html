@@ -1,18 +1,29 @@
+{% extends 'base.html' %}
 {% block head %}
   <link href="/static/css/style.css" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-  <div class = "container">
-    <p> yo </p>
-    <h1> {{ error }} </h1>
-    <form class="register-container" action="/register" method="POST">
-      <input name="username" class="input" type="text" placeholder="Username">
-      <input name="password" class="input" type="password" placeholder="Password">
-      <input name="repeat_password" class="input" type="password" placeholder="Re-enter Password">
-      <input name="image_url" class="input" type="text" placeholder="Paste the URL to an image (optional)"> 
-      <button type="submit" class="submit-button">Register</button>
+<div>
+  <img src="/static/images/right_reg.png" class="right" alt="blob">
+</div>
+  <div class = "container" id="register">
+    <div class = "form-group col-6">
+    <h2>Register</h2>
+    <p class="err"> {{ error }} </p>
+    <form action="/register" method="POST">
+      <input name="username" class="form-control" type="text" placeholder="Username">
+      <br>
+      <input name="password" class="form-control" type="password" placeholder="Password">
+      <br>
+      <input name="repeat_password" class="form-control" type="password" placeholder="Re-enter Password">
+      <br>
+      <input name="image_url" class="form-control" type="text" placeholder="Paste the URL to an image (optional)"> 
+      <br>
+      <button type="submit" class="submit btn btn-primary btn-block">Register</button>
+      <br>
     </form>
-    <a href="/login" class="link">Login instead</a>
+    <p>Already have an account? <a href="/login" class="link">Login</a><p>
   </div>
+</div>
 {% endblock %}

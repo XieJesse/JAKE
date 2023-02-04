@@ -7,11 +7,11 @@
 <div>
   <img src="/static/images/right_reg.png" class="right" alt="blob">
 </div>
-<div class="container">
+<div class="container" id="login">
   <div class = "form-group col-6">
     
     <h2>Login</h2>
-    <p style="color: #ec6d7b;"> {{ error }} </p>
+    <p class="err"> {{ error }} </p>
     <form action="/login" method="POST">
 
       <input name="username" class="form-control" type="text" placeholder="Username"> 

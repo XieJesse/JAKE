@@ -6,6 +6,18 @@
     /* border: 1px solid red; */
 }
 
+.container {
+    text-align: center;
+}
+
+#login {
+    transform: translate(0, 20vh);
+}
+
+#register {
+    transform: translate(0, 10vh);
+}
+
 .right {
     display: flex;
     flex-direction: column;
@@ -48,3 +60,7 @@
     background-color: transparent;
     text-decoration: underline;
   }
+
+.err {
+    color: #ec6d7b;
+}
