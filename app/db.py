@@ -10,7 +10,7 @@ c.execute("""
     CREATE TABLE IF NOT EXISTS USERS (
         USERNAME    TEXT,
         PASSWORD   TEXT,
-        AVATAR_URL    TEXT
+        IMAGE_URL    TEXT
     );""")
 
 c.execute("""
@@ -22,8 +22,8 @@ c.execute("""
 
 database.commit()
 
-def add_user(username,password,avatar_url):
-    c.execute("INSERT INTO USERS (USERNAME,PASSWORD,AVATAR_URL) VALUES (?,?,?)",(username,password,avatar_url))
+def add_user(username,password,image_url):
+    c.execute("INSERT INTO USERS (USERNAME,PASSWORD,IMAGE_URL) VALUES (?,?,?)",(username,password,image_url))
     database.commit()
 
 def add_post(user,content,karma):
@@ -52,6 +52,19 @@ def verify_user(username,password):
     else:
         return 2
 
+def get_user_pfp(username):
+    c.execute("SELECT * FROM USERS WHERE USERNAME = (?)", (username,))
+    user = c.fetchone()
+    return user[2]
+
+def change_user_password(username,password):
+    c.execute("UPDATE USERS SET PASSWORD = (?) WHERE USERNAME = (?)", (password,username))
+    database.commit()
+
+def change_user_pfp(username,image_url):
+    c.execute("UPDATE USERS SET IMAGE_URL = (?) WHERE USERNAME = (?)", (image_url,username))
+    database.commit()
+
 def get_recent_posts():
     c.execute("SELECT * FROM POSTS")
     posts = c.fetchall()
@@ -74,6 +87,15 @@ def get_ranked_posts():
             posts[i] = posts[current_post_index]
             posts[current_post_index] = temp
     return posts
+
+def get_user_posts(username):
+    c.execute("SELECT * FROM POSTS")
+    posts = c.fetchall()
+    user_posts = []
+    for post in posts:
+        if (post[0] == username):
+            user_posts.append(post)
+    return user_posts
 
 def downvote(user,content,datetime):
     c.execute("SELECT * FROM POSTS WHERE USER = (?) AND CONTENT = (?) AND DATETIME = (?)", (user,content,datetime))

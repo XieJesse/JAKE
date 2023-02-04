@@ -4,26 +4,24 @@
     <link href="/static/css/landing.css" rel="stylesheet">
 {% endblock %}
 
+{% block background %} 
+home-bg
+{%endblock%}
+
 {% block homebut %}
 0.8
 {% endblock homebut %}
 
 {% block aboutbut %}
-0.4
+0.8
 {% endblock aboutbut %}
 
 {% block pokedexbut %}
-0.4
+0.8
 {% endblock pokedexbut %}
-
 
 {% block content %}
 
-    <div class="bg-container">
-        
-        <img src="/static/images/blobs.png" class="background-image">
-        <img src="/static/images/left_rose.png" class="left_rose" alt="rose">
-        <img src="/static/images/right_rose.png" class="right_rose" alt="rose">
         <div class="container">
                 <p class="heading-text row">Complimentary</p>
                 <p class="desc-text row">
@@ -36,7 +34,6 @@
             <a class="btns-1" href="">Compliment</a>
             <a class="btns-2" href="">See All</a>
         </div>
-    </div>
 {% endblock %}
 
 

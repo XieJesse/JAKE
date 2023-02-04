@@ -3,11 +3,27 @@
   <link href="/static/css/style.css" rel="stylesheet">
 {% endblock %}
 
+{% block background %} 
+home-bg
+{%endblock%}
+
+{% block homebut %}
+0.6
+{% endblock homebut %}
+
+{% block aboutbut %}
+0.6
+{% endblock aboutbut %}
+
+{% block pokedexbut %}
+0.9
+{% endblock pokedexbut %}
+
 {% block content %}
 <div>
   <img src="/static/images/right_reg.png" class="right" alt="blob">
 </div>
-<div class="container" id="login">
+<div class="container animated animatedFadeInUp fadeInUp" id="login">
   <div class = "form-group col-6">
     
     <h2>Login</h2>

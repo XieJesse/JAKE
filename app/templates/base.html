@@ -13,14 +13,14 @@
         
         {% block head %}{% endblock %}
     </head>
-    <body>
+    <body class="{% block background %} {%endblock%}">
         <div style="height: 50px;" class="container-md">
             <form method="post" action="/">
             <nav class="nav nav-pills flex-column flex-sm-row fw-bold">
               
-                <a class="flex-sm-fill text-sm-center nav-link" style="background-color: rgb(172, 220, 224, {% block homebut %} {%endblock homebut %}); color: black;" aria-current="page" href="{{url_for('game')}}">Game</a>
-                <a class="flex-sm-fill text-sm-center nav-link" style="background-color: rgb(172, 220, 224, {% block aboutbut %} {%endblock aboutbut %}); color: black;"href="{{url_for('collection')}}">Collection</a>
-                <a class="flex-sm-fill text-sm-center nav-link" style="background-color: rgb(172, 220, 224, {% block pokedexbut %} {%endblock pokedexbut %}); color: black;"href="{{url_for('register')}}">Register</a>
+                <a class="flex-sm-fill text-sm-center nav-link" style="background-color: rgba(247, 177, 169, {% block homebut %} {%endblock homebut %}); color: black;" aria-current="page" href="{{url_for('game')}}">Game</a>
+                <a class="flex-sm-fill text-sm-center nav-link" style="background-color: rgba(247, 177, 169, {% block aboutbut %} {%endblock aboutbut %}); color: black;"href="{{url_for('collection')}}">Collection</a>
+                <a class="flex-sm-fill text-sm-center nav-link" style="background-color: rgb(247, 177, 169, {% block pokedexbut %} {%endblock pokedexbut %}); color: black;"href="{{url_for('register')}}">Register</a>
               
             </nav>
             </form>
