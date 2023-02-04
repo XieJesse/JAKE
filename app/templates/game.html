@@ -27,33 +27,25 @@
     ></script>
     <div id="content">
       <button type="button" class="btn btn-primary btn-lg">Reroll</button>
-      <button type="button" class="btn btn-secondary">
-        {{words["nouns"][0]}}
-      </button>
-      <button type="button" class="btn btn-secondary">
-        {{words["nouns"][1]}}
-      </button>
-      <button type="button" class="btn btn-secondary">
-        {{words["nouns"][2]}}
-      </button>
-      <button type="button" class="btn btn-secondary">
-        {{words["isarephrase"][0]}}
-      </button>
-      <button type="button" class="btn btn-secondary">
-        {{words["endings"][0]}}
-      </button>
-      <button type="button" class="btn btn-secondary">
-        {{words["garunteed"][0]}}
-      </button>
-      <button type="button" class="btn btn-secondary">
-        {{words["garunteed"][1]}}
-      </button>
-      <button type="button" class="btn btn-secondary">
-        {{words["garunteed"][2]}}
-      </button>
-      <button type="button" class="btn btn-secondary">
-        {{words["garunteed"][3]}}
-      </button>
+      <div class="words">
+        {% for i in words %}
+        <button
+          id="{{i}}"
+          type="button"
+          class="btn btn-seconary"
+          draggable="true"
+          ondragstart="drag(event)"
+        >
+          {{i}}
+        </button>
+        {% endfor %}
+      </div>
+      <div
+        id="sentence"
+        ondrop="drop(event)"
+        ondragover="allowDrop(event)"
+      ></div>
+      <button onclick="sentence()">Submit</button>
     </div>
   </body>
 </html>

@@ -11,5 +11,27 @@ function initialize() {
   c.style.backgroundColor = "#B4ABFC";
 }
 
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("Text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+
+function sentence() {
+  let sentence = "";
+  var x = document.getElementById("sentence").children;
+  for (let i = 0; i < x.length; i++) {
+    sentence += x[i].id + " ";
+  }
+  console.log(sentence);
+}
+
 initialize();
-setup();
