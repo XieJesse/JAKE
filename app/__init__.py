@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, session
+import requests
 import db
 from os import urandom
 
@@ -31,6 +32,15 @@ def register():
         username = request.form['username']
         password = request.form['password']
         repeat_password = request.form['repeat_password']
+        image_formats = ("image/png", "image/jpeg", "image/jpg")
+        image_url = request.form['image_url']
+        if (image_url == ""):
+            image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
+        url_valid = True
+        try:
+            url_valid = (requests.head(image_url).headers["content-type"] in image_formats)
+        except:
+            url_valid = False
         if (db.user_exists(username)):
             return render_template("register.html", error = "Username is already taken.")
         elif (password != repeat_password):
@@ -39,8 +49,10 @@ def register():
             return render_template("register.html", error = "Password must be at least 8 characters.")
         elif not (password.isalnum):
             return render_template("register.html", error = "Passwords do not match.")
+        elif not (url_valid):
+            return render_template("register.html", error = "Image URL is not valid.")
         else:
-            db.add_user(username,password,'test')
+            db.add_user(username,password,image_url)
             session['username'] = username
             return redirect("/game")
     else:
