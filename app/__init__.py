@@ -112,7 +112,10 @@ def game():
 @app.route("/collection", methods=["GET", "POST"])
 def collection():
     data = db.get_ranked_posts()
-    return render_template("collection.html", data=data)
+    new_data = []
+    for post in data:
+        new_data.append([post[0],post[1],post[2],get_user_pfp(post[0])])
+    return render_template("collection.html", data=new_data)
 
 def getWords():
     with app.open_resource("static/data/vals.json") as f:
