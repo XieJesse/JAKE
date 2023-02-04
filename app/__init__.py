@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template("home.html")
+    return render_template("index.html")
 
 @app.route("/login")
 def login():
@@ -19,7 +19,7 @@ def profile():
 def game():
     return render_template("game.html")
 
-@app.route("collection")
+@app.route("/collection")
 def collection():
     return render_template("collection.html")
 
