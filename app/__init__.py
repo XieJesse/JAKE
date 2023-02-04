@@ -21,7 +21,8 @@ def game():
 
 @app.route("/collection")
 def collection():
-    return render_template("collection.html")
+    data = db.get_ranked_posts()
+    return render_template("collection.html", data = data)
 
 if __name__ == "__main__":
     app.debug = True
