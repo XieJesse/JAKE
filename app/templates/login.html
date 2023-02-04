@@ -4,14 +4,26 @@
 {% endblock %}
 
 {% block content %}
-  <div class = "container">
-    <p>Login</p>
-    <h1> {{ error }} </h1>
-    <form class="login-container" action="/login" method="POST">
-      <input name="username" class="input" type="text" placeholder="Username">
-      <input name="password" class="input" type="password" placeholder="Password">
-      <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
-    </form>
-    <a href="/register" class="link">Register</a>
+<div>
+  <img src="/static/images/right_reg.png" class="right" alt="blob">
+</div>
+<div class="container">
+  <div class = "form-group col-6">
+    
+    <h2>Login</h2>
+    <p style="color: #ec6d7b;"> {{ error }} </p>
+    <form action="/login" method="POST">
+
+      <input name="username" class="form-control" type="text" placeholder="Username"> 
+      <br>
+      <input name="password" class="form-control" type="password" placeholder="Password"
+      <br>
+      <br>
+      <button type="submit" class="submit btn btn-primary btn-block">Login</button>
+      <br>
+    </form> 
+    <p>Not a member yet? <a href="/register" class="link">Register</a><p>
   </div>
+</div>
+
 {% endblock %}

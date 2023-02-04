@@ -1,4 +1,50 @@
 * {
-font-family: 'Helvetica', 'Arial', sans-serif;
-border: 1px solid red
+    box-sizing: border-box; 
+    padding: 0;
+    margin: 0;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    /* border: 1px solid red; */
 }
+
+.right {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items: center;
+    object-fit: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.submit {
+    background: #f6c1bb !important;
+    border: #f6c1bb;
+}
+
+.submit:hover {
+    background-color: #ec6d7b !important;
+}
+
+/* change color of Register button */
+.link:link {
+    color: #f6c1bb;
+    background-color: transparent;
+    text-decoration: none;
+  }
+.link:visited {
+    color: #ec6d7b;
+    background-color: transparent;
+    text-decoration: none;
+  }
+.link:hover {
+    color: #ec6d7b;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+.link:active {
+    color: #f6c1bb;
+    background-color: transparent;
+    text-decoration: underline;
+  }
