@@ -76,7 +76,32 @@ def logout():
 
 @app.route("/profile", methods=["GET", "POST"])
 def profile():
-    return render_template("profile.html")
+    if not 'username' in session.keys():
+        return redirect("/")
+    else:
+        if (request.method == "POST"):
+            current_password = request.form['current_password']
+            new_password = request.form['new_password']
+            repeat_password = request.form['repeat_password']
+            username = session['username']
+            image_url = db.get_user_pfp(username)
+            user_posts = db.get_user_posts(username)
+            if (db.verify_user(session['username'], current_password) == 1):
+                return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, error = "Current password inputted is incorrect.")
+            elif (new_password != repeat_password):
+                return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, error = "Password must be alphanumeric.")
+            elif (len(password) < 8):
+                return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, error = "Password must be at least 8 characters.")
+            elif not (password.isalnum):
+                return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, error = "Passwords do not match.")
+            else:
+                change_user_password(username,new_password)
+                return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, success = "Password has been successfully changed!")
+        else:
+            username = session['username']
+            image_url = db.get_user_pfp(username)
+            user_posts = db.get_user_posts(username)
+            return render_template("profile.html", username = username, image_url = image_url, posts = user_posts)
 
 
 @app.route("/game", methods=["GET", "POST"])
@@ -88,7 +113,6 @@ def game():
 def collection():
     data = db.get_ranked_posts()
     return render_template("collection.html", data=data)
-
 
 def getWords():
     with app.open_resource("static/data/vals.json") as f:
