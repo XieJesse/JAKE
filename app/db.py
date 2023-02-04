@@ -28,6 +28,14 @@ def add_user(username,password,avatar_url):
 def add_post(user,content,karma):
     c.execute("INSERT INTO POSTS (USER,CONTENT,KARMA,DATETIME) VALUES (?,?,?,?)",(user,content,karma,datetime.now().strftime("%d/%m/%Y %H:%M")))
 
+def user_exists(username):
+    c.execute("SELECT * FROM USERS WHERE USERNAME = (?)", (username))
+    existing_username = c.fetchone()
+    if existing_username:
+        return True
+    else:
+        return False
+
 def verify_user(username,password):
     # returns 0 if username and password are correct
     # returns 1 if username exists but password is incorrect
