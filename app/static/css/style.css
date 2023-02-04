@@ -30,7 +30,12 @@
     object-fit: cover;
 }
 
+.form-control {
+    border-radius: 20px !important;
+}
+
 .submit {
+    border-radius: 20px !important;
     background: #f6c1bb !important;
     border: #f6c1bb;
 }
@@ -63,4 +68,48 @@
 
 .err {
     color: #ec6d7b;
+}
+
+/* Fade in Up */
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0,50vh,0)
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: both
+}
+
+.animatedFadeInUp {
+    opacity: 0
+}
+
+.fadeInUp {
+    opacity: 0;
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
+}
+
+.card {
+
+}
+
+.card-header {
+
+}
+
+.card-body {
+
+}
+
+.blockquote {
+
 }
