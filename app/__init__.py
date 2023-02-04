@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, redirect, session
 import db
+from os import urandom
 
 app = Flask(__name__)
+app.secret_key = urandom(32)
 
 @app.route("/", methods=['GET', 'POST'])
 def home():

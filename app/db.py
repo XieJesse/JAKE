@@ -31,7 +31,7 @@ def add_post(user,content,karma):
     database.commit()
 
 def user_exists(username):
-    c.execute("SELECT * FROM USERS WHERE USERNAME = (?)", (username))
+    c.execute("SELECT * FROM USERS WHERE USERNAME = (?)", (username,))
     existing_username = c.fetchone()
     if existing_username:
         return True
@@ -42,7 +42,7 @@ def verify_user(username,password):
     # returns 0 if username and password are correct
     # returns 1 if username exists but password is incorrect
     # returns 2 if username does not exist
-    c.execute("SELECT * FROM USERS WHERE USERNAME = (?)", (username))
+    c.execute("SELECT * FROM USERS WHERE USERNAME = (?)", (username,))
     existing_username = c.fetchone()
     if existing_username:
         if (existing_username[1] == password):
