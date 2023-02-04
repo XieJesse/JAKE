@@ -20,4 +20,4 @@ VERBS = ["looks", "make(s) me feel like", "feels", "loves",
 
 ENDINGS = ["Mate", "honey", "my love", "young chap", "babe", "baby", "sugar", "sugarboo", "honey buns", "sweetie", "sweetiepie", "sugar cubes", "cupcake", "cheerio", "my little dumpling", "felicia"]
 
-GUARANTEED = ["and", "with", "for", "is", "and"]
+GUARANTEED = ["and", "with", "for", "is", "are"]
