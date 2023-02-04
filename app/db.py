@@ -3,7 +3,7 @@ import datetime
 
 MAIN_DB = "data.db"
 
-database = sqlite3.connect(MAIN_DB)
+database = sqlite3.connect(MAIN_DB, check_same_thread=False)
 c = database.cursor()
 
 c.execute("""
@@ -24,9 +24,11 @@ database.commit()
 
 def add_user(username,password,avatar_url):
     c.execute("INSERT INTO USERS (USERNAME,PASSWORD,AVATAR_URL) VALUES (?,?,?)",(username,password,avatar_url))
+    database.commit()
 
 def add_post(user,content,karma):
     c.execute("INSERT INTO POSTS (USER,CONTENT,KARMA,DATETIME) VALUES (?,?,?,?)",(user,content,karma,datetime.now().strftime("%d/%m/%Y %H:%M")))
+    database.commit()
 
 def user_exists(username):
     c.execute("SELECT * FROM USERS WHERE USERNAME = (?)", (username))
