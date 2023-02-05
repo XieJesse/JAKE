@@ -22,8 +22,14 @@ function initialize() {
     9
   );
   ctx.stroke();
+  var sentence = sessionStorage["sentence"];
   ctx.font = "36px Caveat";
-  ctx.fillText(sessionStorage["sentence"], c.width / 2, c.height / 3 + c.height / 12);
+  var metrics = ctx.measureText(sentence).width;
+  if (!(metrics < c.width * 0.8)) {
+    ctx.font = c.width / metrics * 24 + "px Caveat";
+    console.log(ctx.font);
+  }
+  ctx.fillText(sentence, c.width / 2, c.height / 3 + c.height / 12);
 }
 
 function copy() {

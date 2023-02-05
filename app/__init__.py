@@ -143,11 +143,23 @@ def profile():
 
 @app.route("/game", methods=["GET", "POST"])
 def game():
-    return render_template("game.html", words=getWords())
+    image_url = "https://publicdomainpictures.net/pictures/100000/velka/ginger-cat-profile.jpg"
+    if "username" in session.keys():
+        username = session['username']
+        image_url = db.get_user_pfp(username)
+    return render_template("game.html", words=getWords(), image=image_url)
 
 
 @app.route("/collection", methods=["GET", "POST"])
 def collection():
+    if request.method == "POST":
+        json_data = request.get_json()
+        if (json_data[0]["method"]):
+            print("upvoted")
+            db.upvote(json_data[1]["username"],json_data[2]["content"],json_data[3]["datetime"])
+        else:
+            print("downvoted")
+            db.downvote(json_data[1]["username"],json_data[2]["content"],json_data[3]["datetime"])
     data = db.get_ranked_posts()
     new_data = []
     for post in data:
