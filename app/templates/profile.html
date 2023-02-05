@@ -21,5 +21,26 @@ Profile
         {% endfor %}
       </ul>
     </div>
+    <br>
+    <form action="/profile" method="POST">
+
+      <input name="current_password" class="form-control" type="text" placeholder="Current Password">
+      <br>
+      <input name="new_password" class="form-control" type="password" placeholder="New Password"
+      <br>
+      <input name="repeat_password" class="form-control" type="password" placeholder="Repeat New Password"
+      <br>
+      <br>
+      <button type="submit" class="submit btn btn-primary btn-block">Change Password</button>
+      <br>
+    </form>
+    <form action="/profile" method="POST">
+
+      <input name="new_pfp" class="form-control" type="text" placeholder="New Profile Picture URL"
+      <br>
+      <br>
+      <button type="submit" class="submit btn btn-primary btn-block">Change Profile Picture</button>
+      <br>
+    </form>
 
 {% endblock %}
