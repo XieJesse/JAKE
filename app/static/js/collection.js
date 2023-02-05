@@ -3,20 +3,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const posts = collection.getElementsByClassName("card animated animatedFadeInUp fadeInUp")
     console.log(posts);
     for (let i = 0; i < posts.length; i++) { 
-        button = posts[i].getElementsByClassName("fa")[0]
+        button = posts[i].getElementsByClassName("fa-heart")[0]
 
         button.addEventListener("click", function () {
             console.log("clicked")
-            if (button.classList.contains("fa-thumbs-up")) {
-				this.classList.remove("fa", "fa-thumbs-up");
-				this.classList.add("fa", "fa-thumbs-down");
-                  
-            } else {
+            if (button.classList.contains("fa-regular")) {
+				this.classList.remove("fa-regular");
+				this.classList.add("fa-solid");
+                console.log(button)
+            } 
+            else {
                 console.log("thumbs down to thumbs up");
-				this.classList.remove("fa,", "fa-thumbs-down", "unlike");
-				this.classList.add("fa", "fa-thumbs-up", "like");
+				this.classList.remove("fa-solid");
+				this.classList.add("fa-regular");
             }
-            // button.classList.toggle("fa-thumbs-down");
         })
         //console.log(posts[i]);
     }
