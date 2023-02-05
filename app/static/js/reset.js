@@ -6,12 +6,12 @@ function initialize() {
   ctx = c.getContext("2d");
   c.width = window.innerWidth * 0.64;
   c.height = window.innerHeight * 0.48;
-  c.style.backgroundColor = "rgba(255, 255, 255, 0.7)";
+  c.style.backgroundColor = "rgba(255, 255, 255, 0.0)";
   ctx.font = "36px Inter";
   ctx.fillStyle = "red";
   ctx.textBaseline = "middle";
   ctx.textAlign = "center";
-  ctx.fillText("Here is what you created: ", c.width / 2, 100);
+  ctx.fillText("Your wonderful creation ", c.width / 2, 100);
   ctx.strokeStyle = "red";
   ctx.beginPath();
   ctx.roundRect(
