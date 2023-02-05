@@ -12,7 +12,6 @@ function initialize() {
     var sentence = document.getElementById("sentence");
     sentence.innerHTML = sessionStorage["refresh"];
   }
-
 }
 
 function allowDrop(ev) {
@@ -36,30 +35,32 @@ function sentence() {
     sentence += x[i].name + " ";
   }
 
-  fetch("/getdata", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+  if (sentence.length > 0) {
+    fetch("/getdata", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
 
-    // A JSON payload
-    body: JSON.stringify({
-      sentence: sentence,
-    }),
-  })
-    .then(function (response) {
-      // At this point, Flask has printed our JSON
-      return response.text();
+      // A JSON payload
+      body: JSON.stringify({
+        sentence: sentence,
+      }),
     })
-    .then(function (text) {
-      console.log("POST response: ");
+      .then(function (response) {
+        // At this point, Flask has printed our JSON
+        return response.text();
+      })
+      .then(function (text) {
+        console.log("POST response: ");
 
-      // Should be 'OK' if everything was successful
-      console.log(text);
-    });
-  sessionStorage.clear();
-  sessionStorage["sentence"] = sentence;
-  window.location.replace("/reset");
+        // Should be 'OK' if everything was successful
+        console.log(text);
+      });
+    sessionStorage.clear();
+    sessionStorage["sentence"] = sentence;
+    window.location.replace("/reset");
+  }
 }
 
 function refresh() {
