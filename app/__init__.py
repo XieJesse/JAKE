@@ -9,7 +9,6 @@ from os import urandom, path
 app = Flask(__name__)
 app.secret_key = urandom(32)
 
-
 @app.route("/", methods=["GET", "POST"])
 def home():
     user = ""
@@ -171,11 +170,11 @@ def collection():
         json_data = request.get_json()
         if (json_data[0]["method"]):
             post_id = db.get_post_id(json_data[1]["username"],json_data[2]["content"],json_data[3]["datetime"])
-            db.add_upvoted_post(json_data[1]["username"],post_id)
+            db.add_upvoted_post(session["username"],post_id)
             db.upvote(json_data[1]["username"],json_data[2]["content"],json_data[3]["datetime"])
         else:
             post_id = db.get_post_id(json_data[1]["username"],json_data[2]["content"],json_data[3]["datetime"])
-            db.remove_upvoted_post(json_data[1]["username"],post_id)
+            db.remove_upvoted_post(session["username"],post_id)
             db.downvote(json_data[1]["username"],json_data[2]["content"],json_data[3]["datetime"])
     data = db.get_ranked_posts()
     new_data = []
@@ -185,6 +184,7 @@ def collection():
             upvoted_posts = db.get_upvoted_posts(session["username"]).split(",")
             if (str(post[0]) in upvoted_posts):
                 status = True
+        print(status)
         new_data.append([post[1],post[2],post[3],post[4],db.get_user_pfp(post[1]),status])
     return render_template("collection.html", data=new_data, user=user)
 
