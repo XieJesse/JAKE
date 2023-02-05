@@ -4,7 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(items);
     for (let i = 0; i < items.length; i++) {
         text = items[i].getElementsByClassName("d-block")[0] ;
-        text.style.fontSize = String(100 - text.innerHTML.length) + "px" ;
+        text.style.fontSize = String(50 - ((text.innerHTML.length - 50) / 7)) + "px" ;
+        console.log(text.innerHTML.length) ;
         console.log(text.style.fontSize) ;
     }
 })
