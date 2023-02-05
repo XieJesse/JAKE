@@ -10,6 +10,7 @@ function initialize() {
   if (sessionStorage["refresh"]) {
     var sentence = document.getElementById("sentence");
     sentence.innerHTML = sessionStorage["refresh"];
+    sessionStorage["refresh"] = ""
   }
 }
 
