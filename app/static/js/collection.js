@@ -9,6 +9,12 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("clicked")
             this.classList.toggle('fa-regular');
             this.classList.toggle('fa-solid');
+            if (this.classList.contains('fa-solid')) {
+              this.innerHTML = "&nbsp; "+(parseInt(this.innerHTML.slice(7))+1) ;
+            }
+            else {
+              this.innerHTML = "&nbsp; "+(parseInt(this.innerHTML.slice(7))-1) ;
+            }
             var data = [
               {"method" : this.classList.contains('fa-solid')},
               {"username" : posts[i].getElementsByClassName("name")[0].innerHTML.slice(13)},
