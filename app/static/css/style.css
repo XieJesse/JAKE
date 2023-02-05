@@ -137,6 +137,12 @@
   border-radius: 5px;
 }
 
+.navImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+
 .content {
   font-size: 35px;
 }
@@ -177,4 +183,3 @@
     background-position: absolute;
     background-size: cover;
 }
-
