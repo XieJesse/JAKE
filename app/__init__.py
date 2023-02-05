@@ -152,18 +152,29 @@ def game():
 
 @app.route("/collection", methods=["GET", "POST"])
 def collection():
-    if request.method == "POST":
+    if (request.method == "POST" and "username" in session.keys()):
         json_data = request.get_json()
         if (json_data[0]["method"]):
             print("upvoted")
+            post_id = db.get_post_id(json_data[1]["username"],json_data[2]["content"],json_data[3]["datetime"])
+            db.add_upvoted_post(json_data[1]["username"],post_id)
             db.upvote(json_data[1]["username"],json_data[2]["content"],json_data[3]["datetime"])
         else:
             print("downvoted")
+            post_id = db.get_post_id(json_data[1]["username"],json_data[2]["content"],json_data[3]["datetime"])
+            db.remove_upvoted_post(json_data[1]["username"],post_id)
             db.downvote(json_data[1]["username"],json_data[2]["content"],json_data[3]["datetime"])
     data = db.get_ranked_posts()
     new_data = []
     for post in data:
-        new_data.append([post[0],post[1],post[2],post[3],db.get_user_pfp(post[0])])
+        status = False
+        if ("username" in session.keys()):
+            upvoted_posts = db.get_upvoted_posts(session["username"]).split(",")
+            if (str(post[0]) in upvoted_posts):
+                print("a")
+                status = True
+        print(status)
+        new_data.append([post[1],post[2],post[3],post[4],db.get_user_pfp(post[1]),status])
     return render_template("collection.html", data=new_data)
 
 @app.route("/getdata", methods=["GET", "POST"])
