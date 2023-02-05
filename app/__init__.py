@@ -24,9 +24,9 @@ def login():
             session["username"] = username
             return redirect("/game")
         elif auth == 1:
-            return render_template("login.html", error="Incorrect password.")
+            return render_template("login.html", error = "Incorrect password.")
         else:
-            return render_template("login.html", error="User does not exist.")
+            return render_template("login.html", error = "User does not exist.")
     else:
         return render_template("login.html")
 
@@ -86,23 +86,40 @@ def profile():
         return redirect("/")
     else:
         if (request.method == "POST"):
-            current_password = request.form['current_password']
-            new_password = request.form['new_password']
-            repeat_password = request.form['repeat_password']
-            username = session['username']
-            image_url = db.get_user_pfp(username)
-            user_posts = db.get_user_posts(username)
-            if (db.verify_user(session['username'], current_password) == 1):
-                return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, error = "Current password inputted is incorrect.")
-            elif (new_password != repeat_password):
-                return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, error = "Password must be alphanumeric.")
-            elif (len(password) < 8):
-                return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, error = "Password must be at least 8 characters.")
-            elif not (password.isalnum):
-                return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, error = "Passwords do not match.")
-            else:
-                change_user_password(username,new_password)
-                return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, success = "Password has been successfully changed!")
+            if (request.form['change'] == 'password'):
+                current_password = request.form['current_password']
+                new_password = request.form['new_password']
+                repeat_password = request.form['repeat_password']
+                username = session['username']
+                image_url = db.get_user_pfp(username)
+                user_posts = db.get_user_posts(username)
+                if (db.verify_user(session['username'], current_password) == 1):
+                    return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, error = "Current password inputted is incorrect.")
+                elif (new_password != repeat_password):
+                    return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, error = "Password must be alphanumeric.")
+                elif (len(password) < 8):
+                    return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, error = "Password must be at least 8 characters.")
+                elif not (password.isalnum):
+                    return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, error = "Passwords do not match.")
+                else:
+                    change_user_password(username,new_password)
+                    return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, success = "Password has been successfully changed!")
+            if (request.form['change'] == 'profile_picture'):
+                new_image_url = request.form['new_pfp']
+                username = session['username']
+                cur_image_url = db.get_user_pfp(username)
+                user_posts = db.get_user_posts(username)
+                url_valid = True
+                try:
+                    url_valid = (requests.head(new_image_url).headers["content-type"] in image_formats)
+                except:
+                    url_valid = False
+                if (url_valid):
+                    change_user_pfp(username,new_image_url)
+                    return render_template("profile.html", username = username, image_url = new_image_url, posts = user_posts, success = "Profile picture has been successfully changed!")
+                else:
+                    return render_template("profile.html", username = username, image_url = cur_image_url, posts = user_posts, error = "Image URL is not valid.")
+
         else:
             username = session['username']
             image_url = db.get_user_pfp(username)
@@ -120,7 +137,7 @@ def collection():
     data = db.get_ranked_posts()
     new_data = []
     for post in data:
-        new_data.append([post[0],post[1],post[2],db.get_user_pfp(post[0])])
+        new_data.append([post[0],post[1],post[2],post[3],db.get_user_pfp(post[0])])
     return render_template("collection.html", data=new_data)
 
 @app.route("/getdata", methods=["GET", "POST"])

@@ -13,13 +13,17 @@
   <div class="card">
     <div class="card-body">
       <blockquote class="blockquote mb-0">
-        <img src="{{ post[3] }}" alt="Image" style="width: 30px; height: 30px; border-radius: 5px;"> 
-        <p class="content">{{ post[1] }}</p>
-        <p class="username">Yours truly, {{ post[0] }}</p>
+        <div class="row">
+          <img src="{{ post[3] }}" alt="Image" style="width: 30px; height: 30px; border-radius: 5px;"> 
+          <p class="desc">wants to let you know...</p>
+      </div>
+        <p class="content">"{{ post[1] }}"</p>
+        <p class="desc">Yours truly, {{ post[0] }}</p>
       </blockquote>
+      <button class="fa fa-thumbs-up">Like</button>
+      <button class="fa fa-thumbs-down">Dislike</button>
+      <button id="copy" class="copy">Use this</button>
     </div>
-    <button class="fa fa-thumbs-up">Like</button>
-    <button class="fa fa-thumbs-down">Dislike</button>
   </div>
 <br>
   {% endfor %}
