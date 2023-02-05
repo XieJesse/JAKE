@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
         button = posts[i].getElementsByClassName("fa-heart")[0]
 
         button.addEventListener("click", function () {
-            console.log("clicked")
             this.classList.toggle('fa-regular');
             this.classList.toggle('fa-solid');
             if (this.classList.contains('fa-solid')) {
