@@ -34,16 +34,16 @@ home-bg
 {% block content %}
 
         <div class="container">
-                <p class="heading-text row">Complimentary</p>
-                <p class="desc-text row">
+                <p class="heading-text row animated animatedFadeInUp fadeInUp">Complimentary</p>
+                <p class="desc-text row animated animatedFadeInUp fadeInUp">
                     Are you struggling with winning over your significant other? <br />
                     Are you usually at a loss for words? <br />
                     Look no further!
                 </p>
-        </div>
-        <div class="btns">
-            <a class="btns-1" href="">Compliment</a>
-            <a class="btns-2" href="">See All</a>
+                <div class="btns">
+                    <a class="btns-1" href="{{url_for('game')}}">Compliment</a>
+                    <a class="btns-2" href="{{url_for('collection')}}">See All</a>
+                </div>
         </div>
 {% endblock %}
 
