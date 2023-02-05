@@ -91,12 +91,8 @@ def get_ranked_posts():
     return posts
 
 def get_user_posts(username):
-    c.execute("SELECT * FROM POSTS")
-    posts = c.fetchall()
-    user_posts = []
-    for post in posts:
-        if (post[0] == username):
-            user_posts.append(post)
+    c.execute("SELECT * FROM POSTS WHERE USER = (?) ORDER BY KARMA DESC",(username,))
+    user_posts = c.fetchmany(3)
     return user_posts
 
 def downvote(user,content,datetime):
