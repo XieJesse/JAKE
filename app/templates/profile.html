@@ -5,42 +5,81 @@ Profile
 
 {% block content %}
     <br>
+    <p>{{ length }}</p>
     <div class="container">
-      <div class="row">
-        <img src="{{ image_url }}" style="width: 65px; height: 65px; border-radius: 100px;"> </img>
-       <h2>&nbsp  {{ username }} </h2>
+        <div class="row">
+          <img src="{{ image_url }}" style="width: 65px; height: 65px; border-radius: 100px;"> </img>
+        <h2>&nbsp  {{ username }} </h2>
+        </div>
+      <br>
+
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+
+          {% if length == 1 %}
+          <div class="carousel-item active">
+            <p class="d-block w-100" alt="First slide">{{ posts[0][1] }}</p>
+          </div>
+          {% elif length == 2 %}
+            <div class="carousel-item active">
+            <p class="d-block w-100" alt="First slide">{{ posts[0][1] }}</p>
+            </div>
+            <div class="carousel-item">
+              <p class="d-block w-100"  alt="Second slide">{{ posts[1][1] }}</p>
+            </div>
+            {% elif length == 3 %}
+            <div class="carousel-item active">
+            <p class="d-block w-100" alt="First slide">{{ posts[0][1] }}</p>
+            </div>
+            <div class="carousel-item">
+              <p class="d-block w-100"  alt="Second slide">{{ posts[1][1] }}</p>
+            </div>
+            <div class="carousel-item">
+              <p class="d-block w-100"  alt="Third slide">{{ posts[2][1] }}</p>
+            </div>
+            {% else %}
+            <p>Create a post to get started!</p>
+          {% endif %}
+        </div>
+        
       </div>
-    <br>
-    <div class="card" style="background-color: #fff !important;">
-      <div class="card-header">
-        <h5>Your sweetest compliments</h5>
-      </div>
-      <ul class="list-group list-group-flush">
-        {% for post in posts %}
-          <li class="list-group-item" style="font-style: italic;"> {{ post[1] }} </li>
-        {% endfor %}
-      </ul>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
-    <br>
-    <form action="/profile" method="POST">
 
-      <input name="current_password" class="form-control" type="text" placeholder="Current Password">
+    <div class="container">
+      <h2>Personal Information</h2>
       <br>
-      <input name="new_password" class="form-control" type="password" placeholder="New Password"
-      <br>
-      <input name="repeat_password" class="form-control" type="password" placeholder="Repeat New Password"
-      <br>
-      <br>
-      <button type="submit" class="submit btn btn-primary btn-block">Change Password</button>
-      <br>
-    </form>
-    <form action="/profile" method="POST">
+      <form action="/profile" method="POST">
 
-      <input name="new_pfp" class="form-control" type="text" placeholder="New Profile Picture URL"
-      <br>
-      <br>
-      <button type="submit" class="submit btn btn-primary btn-block">Change Profile Picture</button>
-      <br>
-    </form>
+        <input name="current_password" class="form-control" type="text" placeholder="Current Password">
+        <br>
+        <input name="new_password" class="form-control" type="password" placeholder="New Password"
+        <br>
+        <input name="repeat_password" class="form-control" type="password" placeholder="Repeat New Password"
+        <br>
+        <br>
+        <button type="submit" class="submit btn btn-primary btn-block">Change Password</button>
+        <br>
+      </form>
+      <form action="/profile" method="POST">
 
+        <input name="new_pfp" class="form-control" type="text" placeholder="New Profile Picture URL"
+        <br>
+        <br>
+        <button type="submit" class="submit btn btn-primary btn-block">Change Profile Picture</button>
+        <br>
+      </form>
+    <div>
 {% endblock %}
