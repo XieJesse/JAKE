@@ -16,9 +16,6 @@ Profile
 {% block content %}
     <br>
     <br>
-    {{ error }}
-
-    {{ success }}
     <div class="container animated animatedFadeInUp fadeInUp">
         <div class="row">
           <img src="{{ image_url }}" style="width: 65px; height: 65px; border-radius: 100px;"> </img>
@@ -32,24 +29,24 @@ Profile
 
           {% if length == 1 %}
             <div class="carousel-item active">
-              <p class="d-block w-100" alt="First slide">{{ posts[0][2] }}</p>
+              <p class="d-block w-100" alt="First slide">"{{ posts[0][2] }}"</p>
             </div>
           {% elif length == 2 %}
               <div class="carousel-item active">
-              <p class="d-block w-100=" alt="First slide">{{ posts[0][2] }}</p>
+              <p class="d-block w-100=" alt="First slide">"{{ posts[0][2] }}"</p>
               </div>
               <div class="carousel-item">
-                <p class="d-block w-100"  alt="Second slide">{{ posts[1][2] }}</p>
+                <p class="d-block w-100"  alt="Second slide">"{{ posts[1][2] }}"</p>
               </div>
             {% elif length == 3 %}
               <div class="carousel-item active">
-              <p class="d-block w-100" alt="First slide">{{ posts[0][2] }}</p>
+              <p class="d-block w-100" alt="First slide">"{{ posts[0][2] }}"</p>
               </div>
               <div class="carousel-item">
-                <p class="d-block w-100" alt="Second slide">{{ posts[1][2] }}</p>
+                <p class="d-block w-100" alt="Second slide">"{{ posts[1][2] }}"</p>
               </div>
               <div class="carousel-item">
-                <p class="d-block w-100" alt="Third slide">{{ posts[2][2] }}</p>
+                <p class="d-block w-100" alt="Third slide">"{{ posts[2][2] }}"</p>
               </div>
             {% else %}
             <p>Create a post to get started!</p>
@@ -68,6 +65,9 @@ Profile
     <div class="container" style="box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.15); border-radius: 20px; border: 5px solid #ff8779; max-width: 50%; background-color: white;">
       <br>
       <h3>Update your profile</h3>
+      {{ error }}
+
+      {{ success }}
       <form action="/profile" method="POST">
         <input type="hidden" name="change" value="password">
         <input name="current_password" class="form-control" type="password" placeholder="Current Password">
