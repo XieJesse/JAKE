@@ -5,18 +5,28 @@
 {% endblock %}
 
 {% block content %}
-  <h1> test </h1>
+<br>
+  <h1 style="text-align: center;"> See what others are cooking </h1>
+<br>
+<div class="container">
   {% for post in data %}
-    <div class="card">
-      <div class="card-header">
-
+  <div class="card">
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <div class="row">
+          <img src="{{ post[3] }}" alt="Image" style="width: 30px; height: 30px; border-radius: 5px;"> 
+          <p class="desc">wants to let you know...</p>
       </div>
-      <div class="card-body">
-        <blockquote class="blockquote mb-0">
-          <p>{{ post[0] }}</p>
-        </blockquote>
-      </div>
+        <p class="content">"{{ post[1] }}"</p>
+        <p class="desc">Yours truly, {{ post[0] }}</p>
+      </blockquote>
+      <button class="fa fa-thumbs-up">Like</button>
+      <button class="fa fa-thumbs-down">Dislike</button>
+      <button id="copy" class="copy">Use this</button>
     </div>
+  </div>
+<br>
   {% endfor %}
+</div>
 
 {% endblock %}
