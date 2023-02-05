@@ -7,10 +7,10 @@ function initialize() {
   c.width = window.innerWidth * 0.6;
   c.height = window.innerHeight * 0.8;
   c.style.border = "1px solid";
-  c.style.backgroundColor = "rgba(180, 171, 252, 0.5)";
-  if (sessionStorage["sentence"]) {
+  c.style.backgroundColor = "rgba(0, 0, 0, 0.1)";
+  if (sessionStorage["refresh"]) {
     var sentence = document.getElementById("sentence");
-    sentence.innerHTML = sessionStorage["sentence"];
+    sentence.innerHTML = sessionStorage["refresh"];
   }
 
 }
@@ -58,13 +58,14 @@ function sentence() {
       console.log(text);
     });
   sessionStorage.clear();
+  sessionStorage["sentence"] = sentence;
   window.location.replace("/reset");
 }
 
 function refresh() {
   var sentence = document.getElementById("sentence");
   var initial = sentence.innerHTML;
-  sessionStorage["sentence"] = initial;
+  sessionStorage["refresh"] = initial;
   window.location.replace("/game");
 }
 
