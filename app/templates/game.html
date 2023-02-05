@@ -27,16 +27,16 @@
     ></script>
     <div id="content">
       <button type="button" class="btn btn-primary btn-lg">Reroll</button>
-      <div class="words">
-        {% for i in words %}
+      <div class="words" ondrop="drop(event)" ondragover="allowDrop(event)">
+        {% for i in range(words|length) %}
         <button
-          id="{{i}}"
-          type="button"
-          class="btn btn-seconary"
+          id="drop{{i}}"
+          name="{{words[i]}}"
+          class="btn"
           draggable="true"
           ondragstart="drag(event)"
         >
-          {{i}}
+          {{words[i]}}
         </button>
         {% endfor %}
       </div>
@@ -45,7 +45,7 @@
         ondrop="drop(event)"
         ondragover="allowDrop(event)"
       ></div>
-      <button onclick="sentence()">Submit</button>
+      <button onclick="sentence()" class="btn btn-secondary">Submit</button>
     </div>
   </body>
 </html>

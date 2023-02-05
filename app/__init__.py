@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, jsonify
 import requests
 import db
 import json
@@ -122,6 +122,21 @@ def collection():
     for post in data:
         new_data.append([post[0],post[1],post[2],db.get_user_pfp(post[0])])
     return render_template("collection.html", data=new_data)
+
+@app.route("/getdata", methods=["GET", "POST"])
+def getdata():
+
+    # POST request
+    if request.method == "POST":
+        print("Incoming..")
+        a = request.get_json()
+        sentence = a["sentence"].strip()
+        return "OK", 200
+
+    # GET request
+    else:
+        message = {"greeting": "Hello from Flask!"}
+        return jsonify(message)  # serialize and use JSON headers
 
 def getWords():
     words = []
