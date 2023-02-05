@@ -7,12 +7,12 @@ function initialize() {
   c.width = window.innerWidth * 0.6;
   c.height = window.innerHeight * 0.8;
   c.style.border = "1px solid";
-  c.style.backgroundColor = "rgba(180, 171, 252, 0.5)";
-
-  ctx.font = "36px Helvetica";
+  c.style.backgroundColor = "rgba(0, 0, 0, 0.1)";
+  ctx.font = "36px Inter";
   ctx.fillStyle = "red";
+  ctx.textBaseline = "middle";
   ctx.textAlign = "center";
-  ctx.fillText("Here's what you came up with", c.height / 2, c.height / 8);
+  ctx.fillText("Here is what you created: ", c.width / 2, 75);
   ctx.strokeStyle = "red";
   ctx.beginPath();
   ctx.roundRect(
@@ -23,6 +23,12 @@ function initialize() {
     9
   );
   ctx.stroke();
+  ctx.font = "36px Caveat";
+  ctx.fillText(sessionStorage["sentence"], c.width / 2, c.height / 4);
+}
+
+function copy() {
+  navigator.clipboard.writeText(sessionStorage["sentence"]);
 }
 
 initialize();

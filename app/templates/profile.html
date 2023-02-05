@@ -5,7 +5,13 @@ Profile
 
 {% block content %}
     <br>
+<<<<<<< HEAD
     <p>{{ length }}</p>
+=======
+    {{ error }}
+
+    {{ success }}
+>>>>>>> afc6c8ee18684dc7bd8b9190e95096f0eacc3e00
     <div class="container">
         <div class="row">
           <img src="{{ image_url }}" style="width: 65px; height: 65px; border-radius: 100px;"> </img>
@@ -57,6 +63,7 @@ Profile
         <span class="sr-only">Next</span>
       </a>
     </div>
+<<<<<<< HEAD
 
     <div class="container">
       <h2>Personal Information</h2>
@@ -74,6 +81,29 @@ Profile
         <br>
       </form>
       <form action="/profile" method="POST">
+=======
+    <br>
+    <form action="/profile" method="POST">
+      <input type="hidden" name="change" value="password">
+      <input name="current_password" class="form-control" type="password" placeholder="Current Password">
+      <br>
+      <input name="new_password" class="form-control" type="password" placeholder="New Password"
+      <br>
+      <input name="repeat_password" class="form-control" type="password" placeholder="Repeat New Password"
+      <br>
+      <br>
+      <button type="submit" class="submit btn btn-primary btn-block">Change Password</button>
+      <br>
+    </form>
+    <form action="/profile" method="POST">
+      <input type="hidden" name="change" value="profile_picture">
+      <input name="new_pfp" class="form-control" type="text" placeholder="New Profile Picture URL"
+      <br>
+      <br>
+      <button type="submit" class="submit btn btn-primary btn-block">Change Profile Picture</button>
+      <br>
+    </form>
+>>>>>>> afc6c8ee18684dc7bd8b9190e95096f0eacc3e00
 
         <input name="new_pfp" class="form-control" type="text" placeholder="New Profile Picture URL"
         <br>
