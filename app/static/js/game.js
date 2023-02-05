@@ -7,14 +7,10 @@ function initialize() {
   c.width = window.innerWidth * 0.64;
   c.height = window.innerHeight * 0.48;
   c.style.backgroundColor = "rgba(255, 255, 255, 0)";
-  if (!("rolls" in sessionStorage)) {
-    sessionStorage["rolls"] = 1;
-  }
   if (sessionStorage["refresh"]) {
     var sentence = document.getElementById("sentence");
     sentence.innerHTML = sessionStorage["refresh"];
     sessionStorage["refresh"] = "";
-    sessionStorage["rolls"] = 1;
   }
 }
 
@@ -69,7 +65,6 @@ function sentence() {
       });
     sessionStorage.clear();
     sessionStorage["sentence"] = sentence;
-    sessionStorage["rolls"] = 1;
     window.location.replace("/reset");
   }
 }
@@ -77,11 +72,8 @@ function sentence() {
 function refresh() {
   var sentence = document.getElementById("sentence");
   var initial = sentence.innerHTML;
-  if (sessionStorage["rolls"] > 0) {
-    sessionStorage["refresh"] = initial;
-    sessionStorage["rolls"] -= 1;
-    window.location.replace("/game");
-  }
+  sessionStorage["refresh"] = initial;
+  window.location.replace("/game");
 }
 
 initialize();
