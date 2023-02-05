@@ -4,7 +4,6 @@ Reset
 {% endblock %}
 {% block head %}
 {{ super() }}
-<link rel="stylesheet" href="{{ url_for('static', filename='/css/landing.css') }}"/>
 <link rel="stylesheet" href="{{ url_for('static', filename='/css/reset.css') }}"/>
 {% endblock %}
 
@@ -26,6 +25,12 @@ home-bg
 
 {% block content %}
 <canvas id="game"></canvas>
+<div id="content">
+    <button>Copy & Paste</button>
+    <button>Try Again</button>
+    <button>Share</button>
+    <button>See What others are cooking</button>
+</div>
 <script
     type="text/javascript"
     src="{{ url_for('static', filename='js/reset.js') }}">

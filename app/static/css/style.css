@@ -6,6 +6,11 @@
     /* border: 1px solid red; */
 }
 
+html, body {
+    display: flex;
+    flex-direction: column;
+}
+
 .container {
     text-align: center;
 }
