@@ -8,8 +8,7 @@ function initialize() {
   c.height = window.innerHeight * 0.8;
   c.style.border = "1px solid";
   c.style.backgroundColor = "rgba(0, 0, 0, 0.1)";
-
-  ctx.font = "36px Helvetica";
+  ctx.font = "36px Inter";
   ctx.fillStyle = "red";
   ctx.textBaseline = "middle";
   ctx.textAlign = "center";
@@ -24,11 +23,12 @@ function initialize() {
     9
   );
   ctx.stroke();
-  ctx.fillText(
-    sessionStorage["sentence"],
-    c.width / 2,
-    c.height / 4
-  );
+  ctx.font = "36px Caveat";
+  ctx.fillText(sessionStorage["sentence"], c.width / 2, c.height / 4);
+}
+
+function copy() {
+  navigator.clipboard.writeText(sessionStorage["sentence"]);
 }
 
 initialize();
