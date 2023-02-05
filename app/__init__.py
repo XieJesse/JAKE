@@ -12,11 +12,17 @@ app.secret_key = urandom(32)
 
 @app.route("/", methods=["GET", "POST"])
 def home():
-    return render_template("index.html")
+    user = ""
+    if "username" in session:
+        user = db.get_user_pfp(session["username"])
+    return render_template("index.html", user=user)
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    user = ""
+    if "username" in session:
+        user = db.get_user_pfp(session["username"])
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
@@ -29,11 +35,14 @@ def login():
         else:
             return render_template("login.html", error = "User does not exist.")
     else:
-        return render_template("login.html")
+        return render_template("login.html", user=user)
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    user = ""
+    if "username" in session:
+        user = db.get_user_pfp(session["username"])
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
@@ -80,7 +89,7 @@ def register():
             session["username"] = username
             return redirect("/game")
     else:
-        return render_template("register.html")
+        return render_template("register.html", user=user)
 
 
 @app.route("/logout", methods=["GET", "POST"])
@@ -95,6 +104,9 @@ def logout():
 
 @app.route("/profile", methods=["GET", "POST"])
 def profile():
+    user = ""
+    if "username" in session:
+        user = db.get_user_pfp(session["username"])
     if not 'username' in session.keys():
         return redirect("/")
     else:
@@ -138,20 +150,22 @@ def profile():
             username = session['username']
             image_url = db.get_user_pfp(username)
             user_posts = db.get_user_posts(username)
-            return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, length = len(user_posts))
+            return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, length = len(user_posts), user=user)
 
 
 @app.route("/game", methods=["GET", "POST"])
 def game():
-    image_url = "https://publicdomainpictures.net/pictures/100000/velka/ginger-cat-profile.jpg"
-    if "username" in session.keys():
-        username = session['username']
-        image_url = db.get_user_pfp(username)
-    return render_template("game.html", words=getWords(), image=image_url)
+    user = ""
+    if "username" in session:
+        user = db.get_user_pfp(session["username"])
+    return render_template("game.html", words=getWords(), user=user)
 
 
 @app.route("/collection", methods=["GET", "POST"])
 def collection():
+    user = ""
+    if "username" in session:
+        user = db.get_user_pfp(session["username"])
     if (request.method == "POST" and "username" in session.keys()):
         json_data = request.get_json()
         if (json_data[0]["method"]):
@@ -175,7 +189,7 @@ def collection():
                 status = True
         print(status)
         new_data.append([post[1],post[2],post[3],post[4],db.get_user_pfp(post[1]),status])
-    return render_template("collection.html", data=new_data)
+    return render_template("collection.html", data=new_data, user=user)
 
 @app.route("/getdata", methods=["GET", "POST"])
 def getdata():
@@ -196,7 +210,10 @@ def getdata():
 
 @app.route("/reset")
 def reset():
-    return render_template("reset.html")
+    user = ""
+    if "username" in session:
+        user = db.get_user_pfp(session["username"])
+    return render_template("reset.html", user=user)
 
 def getWords():
     words = []
