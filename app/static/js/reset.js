@@ -2,9 +2,8 @@ var c;
 var ctx;
 
 function initialize() {
-  c = document.getElementById("game");
+  c = document.getElementById("can");
   ctx = c.getContext("2d");
-
   c.width = window.innerWidth * 0.6;
   c.height = window.innerHeight * 0.8;
   c.style.border = "1px solid";

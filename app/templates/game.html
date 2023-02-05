@@ -1,51 +1,54 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Game</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-      crossorigin="anonymous"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='/css/game.css') }}"
-    />
-    {% block head %}{% endblock %}
-  </head>
-  <body>
-    <canvas id="game"></canvas>
-    <script
-      type="text/javascript"
-      src="{{ url_for('static', filename='js/game.js') }}"
-    ></script>
-    <div id="content">
-      <button type="button" class="btn btn-primary btn-lg">Reroll</button>
-      <div class="words" ondrop="drop(event)" ondragover="allowDrop(event)">
-        {% for i in range(words|length) %}
-        <button
-          id="drop{{i}}"
-          name="{{words[i]}}"
-          class="btn"
-          draggable="true"
-          ondragstart="drag(event)"
-        >
-          {{words[i]}}
-        </button>
-        {% endfor %}
-      </div>
-      <div
-        id="sentence"
-        ondrop="drop(event)"
-        ondragover="allowDrop(event)"
-      ></div>
-      <button onclick="sentence()" class="btn btn-secondary">Submit</button>
+{% extends 'base.html' %}
+{% block head %}
+{{ super() }}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/game.css') }}" />
+<link href="/static/css/landing.css" rel="stylesheet">
+{% endblock %}
+
+{% block background %}
+home-bg
+{%endblock%}
+
+{% block homebut %}
+0.6
+{% endblock homebut %}
+
+{% block gamebut %}
+1
+{% endblock gamebut %}
+
+{% block colbut %}
+0.6
+{% endblock colbut %}
+
+{% block probut %}
+0.6
+{% endblock probut %}
+
+{% block logbut %}
+0.6
+{% endblock logbut %}
+
+{% block content %}
+<div id="canvas-container"> 
+  <canvas id="game"></canvas>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/game.js') }}"></script>
+  <div id="content1">
+    <button type="button" class="btn btn-primary btn-lg">Reroll</button>
+    <div class="words" ondrop="drop(event)" ondragover="allowDrop(event)">
+      {% for i in range(words|length) %}
+      <button id="drop{{i}}" name="{{words[i]}}" class="btn" draggable="true" ondragstart="drag(event)">
+        {{words[i]}}
+      </button>
+      {% endfor %}
     </div>
-  </body>
-</html>
+    <div id="sentence" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <button onclick="sentence()" class="btn btn-secondary">Submit</button>
+  </div>
+</div>
+
+{% endblock %}
