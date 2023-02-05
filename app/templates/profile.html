@@ -4,13 +4,22 @@ Profile
 {% endblock %}
 
 {% block content %}
-  <div>
-    <p1> Welcome, {{ username }}! </p1>
-    <img src="{{ image_url }}"> </img>
-    {% for post in posts %}
-      <div class="card">
-        <h1>"{{ post[1] }}"</h1>
+    <br>
+    <div class="container">
+      <div class="row">
+        <img src="{{ image_url }}" style="width: 65px; height: 65px; border-radius: 100px;"> </img>
+       <h2>&nbsp  {{ username }} </h2>
       </div>
-    {% endfor %}
-  </div>
+    <br>
+    <div class="card" style="background-color: #fff !important;">
+      <div class="card-header">
+        <h5>Your sweetest compliments</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        {% for post in posts %}
+          <li class="list-group-item" style="font-style: italic;"> {{ post[1] }} </li>
+        {% endfor %}
+      </ul>
+    </div>
+
 {% endblock %}
