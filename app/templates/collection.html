@@ -9,11 +9,11 @@
 {% block content %}
 <br>
 <br>
-  <h1 style="color: #ff8779; font-family: 'Inter', sans-serif; text-align: center;">Collection</h1>
+  <h1 style="color: #fd5761; font-family: 'Inter', sans-serif; text-align: center;">Collection</h1>
 <br>
 <div class="container" id="coll">
   {% for post in data %}
-  <div class="card animated animatedFadeInUp fadeInUp">
+  <div class="glass card animated animatedFadeInUp fadeInUp">
     <div class="card-body">
       <blockquote class="blockquote mb-0">
         <div class="row">
@@ -22,7 +22,7 @@
           <p class="desc time" style="font-size: 10px; position: absolute; right: 15px;">Posted on {{ post[3] }}</p>
       </div>
       <br>
-        <p class="content"><strong>{{ post[1] }}</strong></p>
+        <p class="content"><strong>"{{ post[1] }}"</strong></p>
       <p class="desc name">Yours truly, {{ post[0] }}</p>
       </blockquote>
 
