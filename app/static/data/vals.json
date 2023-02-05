@@ -58,7 +58,8 @@
     "in contention for a nobel prize",
     "one of a kind",
     "a work of art",
-    "not bad at all"
+    "not bad at all",
+    "worth dying for"
   ],
   "verbs": [
     "looks",
@@ -84,11 +85,12 @@
     "reminds me of",
     "pales in comparison to",
     "I think that",
-    "the entire world believes that"
+    "the entire world believes that",
+    "you should know that"
   ],
 
   "endings": [
-    "Mate",
+    "mate",
     "honey",
     "my love",
     "young chap",
@@ -98,14 +100,13 @@
     "sugarboo",
     "honey buns",
     "sweetie",
-    "sweetiepie",
-    "sugar cubes",
     "cupcake",
     "cheerio",
     "my little dumpling",
-    "felicia",
     "my sweet buttercup",
-    "and I really mean it"
+    "and I really mean it",
+    "sunshine",
+    "snookums"
   ],
   "garunteed": ["and", "with", "for", "is", "are"]
 }
