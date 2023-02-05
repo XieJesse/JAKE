@@ -10,11 +10,13 @@ c.execute("""
     CREATE TABLE IF NOT EXISTS USERS (
         USERNAME    TEXT,
         PASSWORD   TEXT,
-        IMAGE_URL    TEXT
+        IMAGE_URL    TEXT,
+        POSTS_UPVOTED TEXT
     );""")
 
 c.execute("""
     CREATE TABLE IF NOT EXISTS POSTS (
+        ID INTEGER PRIMARY KEY AUTOINCREMENT,
         USER    TEXT,
         CONTENT   TEXT,
         KARMA    INTEGER,
@@ -24,7 +26,7 @@ c.execute("""
 database.commit()
 
 def add_user(username,password,image_url):
-    c.execute("INSERT INTO USERS (USERNAME,PASSWORD,IMAGE_URL) VALUES (?,?,?)",(username,password,image_url))
+    c.execute("INSERT INTO USERS (USERNAME,PASSWORD,IMAGE_URL,POSTS_UPVOTED) VALUES (?,?,?,?)",(username,password,image_url,""))
     database.commit()
 
 def add_post(user,content):
@@ -54,6 +56,39 @@ def verify_user(username,password):
     else:
         return 2
 
+def get_upvoted_posts(username):
+    c.execute("SELECT * FROM USERS WHERE USERNAME = (?)", (username,))
+    upvotedPosts = c.fetchone()[3]
+    return upvotedPosts
+    
+def add_upvoted_post(username,id):
+    updated_ids = ""
+    c.execute("SELECT * FROM USERS WHERE USERNAME = (?)", (username,))
+    upvotedPosts = c.fetchone()[3]
+    if (upvotedPosts == ""):
+        updated_ids = id
+    else:
+        temp = upvotedPosts.split(",")
+        temp.append(str(id))
+        updated_ids = ",".join(temp)
+    c.execute("UPDATE USERS SET POSTS_UPVOTED = (?) WHERE USERNAME = (?)", (updated_ids,username))
+    database.commit()
+
+def remove_upvoted_post(username,id):
+    updated_ids = ""
+    c.execute("SELECT * FROM USERS WHERE USERNAME = (?)", (username,))
+    upvotedPosts = c.fetchone()[3]
+    temp = upvotedPosts.split(",")
+    temp.remove(str(id))
+    updated_ids = ",".join(temp)
+    c.execute("UPDATE USERS SET POSTS_UPVOTED = (?) WHERE USERNAME = (?)", (updated_ids,username))
+    database.commit()
+
+def get_post_id(user,content,datetime):
+    c.execute("SELECT * FROM POSTS WHERE USER = (?) AND CONTENT = (?) AND DATETIME = (?)", (user,content,datetime))
+    user_id = c.fetchone()[0]
+    return user_id
+
 def get_user_pfp(username):
     c.execute("SELECT * FROM USERS WHERE USERNAME = (?)", (username,))
     user = c.fetchone()
@@ -81,7 +116,7 @@ def get_ranked_posts():
     for i in range(0,len(posts)-1):
         current_post_index = i
         for j in range(i+1,len(posts)):
-            if (posts[j][2] >= posts[current_post_index][2]):
+            if (posts[j][3] >= posts[current_post_index][3]):
                 current_post_index = j
         if (current_post_index != i):
             # swap
@@ -97,13 +132,13 @@ def get_user_posts(username):
 
 def downvote(user,content,datetime):
     c.execute("SELECT * FROM POSTS WHERE USER = (?) AND CONTENT = (?) AND DATETIME = (?)", (user,content,datetime))
-    current_karma = c.fetchone()[2]
+    current_karma = c.fetchone()[3]
     c.execute("UPDATE POSTS SET KARMA = (?) WHERE USER = (?) AND CONTENT = (?) AND DATETIME = (?)", (current_karma-1,user,content,datetime))
     database.commit()
 
 
 def upvote(user,content,datetime):
     c.execute("SELECT * FROM POSTS WHERE USER = (?) AND CONTENT = (?) AND DATETIME = (?)", (user,content,datetime))
-    current_karma = c.fetchone()[2]
+    current_karma = c.fetchone()[3]
     c.execute("UPDATE POSTS SET KARMA = (?) WHERE USER = (?) AND CONTENT = (?) AND DATETIME = (?)", (current_karma+1,user,content,datetime))
     database.commit()
