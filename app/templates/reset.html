@@ -12,30 +12,13 @@ Reset
 home-bg
 {%endblock%}
 
-{% block homebut %}
-0.6
-{% endblock homebut %}
-
-{% block gamebut %}
-1
-{% endblock gamebut %}
-
-{% block colbut %}
-0.6
-{% endblock colbut %}
-
-{% block probut %}
-0.6
-{% endblock probut %}
-
-{% block logbut %}
-0.6
-{% endblock logbut %}
-
 {% block content %}
 <div id="canvas-container">
     <canvas id="game"></canvas>
     <div id="content1">
+        {% for i in range(10) %}
+        <br/>
+        {% endfor %}
         <button class="btn btn-secondary" onclick="copy()">Copy & Paste</button>
         <a href="{{url_for('game')}}"><button class="btn btn-secondary">Try Again</button></a>
         <button class="btn btn-secondary">Share</button>
