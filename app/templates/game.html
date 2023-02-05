@@ -34,20 +34,21 @@ home-bg
 {% endblock logbut %}
 
 {% block content %}
-
-<canvas id="game"></canvas>
-<script type="text/javascript" src="{{ url_for('static', filename='js/game.js') }}"></script>
-<div id="content">
-  <button type="button" class="btn btn-primary btn-lg">Reroll</button>
-  <div class="words" ondrop="drop(event)" ondragover="allowDrop(event)">
-    {% for i in range(words|length) %}
-    <button id="drop{{i}}" name="{{words[i]}}" class="btn" draggable="true" ondragstart="drag(event)">
-      {{words[i]}}
-    </button>
-    {% endfor %}
+<div id="canvas-container"> 
+  <canvas id="game"></canvas>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/game.js') }}"></script>
+  <div id="content1">
+    <button type="button" class="btn btn-primary btn-lg">Reroll</button>
+    <div class="words" ondrop="drop(event)" ondragover="allowDrop(event)">
+      {% for i in range(words|length) %}
+      <button id="drop{{i}}" name="{{words[i]}}" class="btn" draggable="true" ondragstart="drag(event)">
+        {{words[i]}}
+      </button>
+      {% endfor %}
+    </div>
+    <div id="sentence" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <button onclick="sentence()" class="btn btn-secondary">Submit</button>
   </div>
-  <div id="sentence" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-  <button onclick="sentence()" class="btn btn-secondary">Submit</button>
 </div>
 
 {% endblock %}
