@@ -8,7 +8,8 @@
 {% endblock %}
 {% block content %}
 <br>
-  <h1 style="text-align: center;">The Complimentory</h1>
+<br>
+  <h1 style="color: #ff8779; font-family: 'Inter', sans-serif; text-align: center;">Collection</h1>
 <br>
 <div class="container" id="coll">
   {% for post in data %}
@@ -18,10 +19,10 @@
         <div class="row">
           <img class="info" style="position: absolute; left: 2%"src="{{ post[4] }}" alt="Image">
           <p class="desc" style="position: absolute; left: 6%;">&nbsp wants to let you know...</p>
-          <p class="desc time" style="font-size: 12px; position: absolute; right: 15px;">Posted on {{ post[3] }}</p>
+          <p class="desc time" style="font-size: 10px; position: absolute; right: 15px;">Posted on {{ post[3] }}</p>
       </div>
-      <br>
-        <p class="content">{{ post[1] }}</p>
+      <br> 
+        <p class="content"><strong>{{ post[1] }}</strong></p>
       <p class="desc name">Yours truly, {{ post[0] }}</p>
       </blockquote>
 
