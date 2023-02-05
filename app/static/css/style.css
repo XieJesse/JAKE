@@ -95,11 +95,20 @@
 .fadeInUp {
     opacity: 0;
     animation-name: fadeInUp;
-    -webkit-animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;   
 }
 
 .card {
+    border-radius: 20px !important;
+    box-shadow: 0 6px 20px 0 rgba(0,0,0,.15);
+}
 
+.card .username {
+    color: #7f7f7f;
+}
+
+.card:hover {
+    background-color: pink;
 }
 
 .card-header {
