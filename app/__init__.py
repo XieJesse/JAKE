@@ -184,7 +184,6 @@ def collection():
             upvoted_posts = db.get_upvoted_posts(session["username"]).split(",")
             if (str(post[0]) in upvoted_posts):
                 status = True
-        print(status)
         new_data.append([post[1],post[2],post[3],post[4],db.get_user_pfp(post[1]),status])
     return render_template("collection.html", data=new_data, user=user)
 

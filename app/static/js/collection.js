@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         copy.addEventListener("click", function() {
           console.log("copy")
-          navigator.clipboard.writeText(posts[i].getElementsByClassName("content")[0].innerHTML);
+          navigator.clipboard.writeText(posts[i].getElementsByClassName("content")[0].innerHTML.substring(9,posts[i].getElementsByClassName("content")[0].innerHTML.length-10));
         })
         //console.log(posts[i]);
     }
