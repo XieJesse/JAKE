@@ -23,12 +23,12 @@ function allowDrop(ev) {
 }
 
 function drag(ev) {
-  ev.dataTransfer.setData("text/html", ev.target.id);
+  ev.dataTransfer.setData("text", ev.target.id);
 }
 
 function drop(ev) {
   var _target = $("#" + ev.target.id);
-  var data = ev.dataTransfer.getData("text/html");
+  var data = ev.dataTransfer.getData("text");
   if ($(_target).hasClass("noDrop")) {
     console.log("no transfer");
     ev.preventDefault();
