@@ -16,7 +16,7 @@ function initialize() {
   ctx.fillText("Here's what you came up with", c.height / 2, c.height / 8)
   ctx.strokeStyle = "red";
   ctx.beginPath();
-  ctx.roundRect(c.width / 2 - c.width * .4, c.height / 4, c.width * 0.8, c.height / 6, 9);
+  ctx.roundRect(c.width / 2 - c.width * .4, c.height / 5, c.width * 0.8, c.height / 7, 9);
   ctx.stroke();
 }
 

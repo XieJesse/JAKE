@@ -7,30 +7,41 @@ Reset
 <link rel="stylesheet" href="{{ url_for('static', filename='/css/reset.css') }}"/>
 {% endblock %}
 
-{% block background %} 
+{% block background %}
 home-bg
 {%endblock%}
 
 {% block homebut %}
-0.8
+0.6
 {% endblock homebut %}
 
-{% block aboutbut %}
-0.8
-{% endblock aboutbut %}
+{% block gamebut %}
+1
+{% endblock gamebut %}
 
-{% block pokedexbut %}
-0.8
-{% endblock pokedexbut %}
+{% block colbut %}
+0.6
+{% endblock colbut %}
+
+{% block probut %}
+0.6
+{% endblock probut %}
+
+{% block logbut %}
+0.6
+{% endblock logbut %}
 
 {% block content %}
-<canvas id="can"></canvas>
-<div id="game">
-    <button>Copy & Paste</button>
-    <button>Try Again</button>
-    <button>Share</button>
-    <button>See What others are cooking</button>
+<div id="canvas-container">
+    <canvas id="game"></canvas>
+    <div id="content1">
+        <button class="btn btn-secondary">Copy & Paste</button>
+        <button class="btn btn-secondary">Try Again</button>
+        <button class="btn btn-secondary">Share</button>
+        <button class="btn btn-secondary">See What others are cooking</button>
+    </div>
 </div>
+
 <script
     type="text/javascript"
     src="{{ url_for('static', filename='js/reset.js') }}">
