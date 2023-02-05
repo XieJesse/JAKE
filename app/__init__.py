@@ -148,6 +148,8 @@ def getdata():
         print("Incoming..")
         a = request.get_json()
         sentence = a["sentence"].strip()
+        if "username" in session.keys():
+            db.add_post(session["username"],sentence)
         return "OK", 200
 
     # GET request
