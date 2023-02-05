@@ -3,6 +3,7 @@ import requests
 import db
 import json
 import random
+import urllib
 from os import urandom, path
 
 app = Flask(__name__)
@@ -39,15 +40,23 @@ def register():
         repeat_password = request.form["repeat_password"]
         image_formats = ("image/png", "image/jpeg", "image/jpg")
         image_url = request.form["image_url"]
-        if image_url == "":
-            image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
         url_valid = True
-        try:
-            url_valid = (
-                requests.head(image_url).headers["content-type"] in image_formats
-            )
-        except:
-            url_valid = False
+        if image_url == "":
+            # random image from lorem picsum
+            req = urllib.request.Request('https://picsum.photos/v2/list?limit=1&page='+str(random.randint(0,993)), headers={'User-Agent': 'Mozilla/5.0'})
+            data = urllib.request.urlopen(req)
+            response = data.read()
+            response_info = json.loads(response)
+            name = "Image "+str(response_info[0]["id"])
+            image_url = response_info[0]["download_url"]
+            #image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
+        else:
+            try:
+                url_valid = (
+                    requests.head(image_url).headers["content-type"] in image_formats
+                )
+            except:
+                url_valid = False
         if db.user_exists(username):
             return render_template("register.html", error="Username is already taken.")
         elif password != repeat_password:
