@@ -3,7 +3,7 @@
   padding: 0;
   margin: 0;
   font-family: "Helvetica", "Arial", sans-serif;
-  /* border: 1px solid red; */
+  user-select: none;
 }
 
 .container {
@@ -102,8 +102,8 @@
 /* end anim */
 
 .fa-solid {
-    color: #fd5761;
-  }
+  color: #fd5761;
+}
 
 .card {
   border-radius: 20px !important;
@@ -146,7 +146,7 @@
 .content {
   font-size: 35px;
   color: #fd5761;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .log-bg {
@@ -158,37 +158,37 @@
 }
 
 .blobs-bg {
-    position: absolute;
-    height: 100%;
-    background-image: url(/static/images/blobs_mirrored.png);
-    background-repeat: no-repeat;
-    background-position: absolute;
-    background-size: cover;
-  }
+  position: absolute;
+  height: 100%;
+  background-image: url(/static/images/blobs_mirrored.png);
+  background-repeat: no-repeat;
+  background-position: absolute;
+  background-size: cover;
+}
 
 #carouselExampleIndicators {
-    max-width: 100%;
-    min-height: 80px;
-    max-height: 80px;
+  max-width: 100%;
+  min-height: 80px;
+  max-height: 80px;
 }
 
 .carousel-item p {
-    font-size: 50px;
-    color: #ff8779;
-    font-family: 'Inter', sans-serif;
+  font-size: 50px;
+  color: #ff8779;
+  font-family: "Inter", sans-serif;
 }
 
 .home-bg {
-    height: 100%;
-    background-image: url(/static/images/right_rose.png), url(/static/images/left_rose.png), url(/static/images/blobs.png);
-    background-repeat: no-repeat, no-repeat, no-repeat;
-    background-position: absolute;
-    background-size: cover;
+  height: 100%;
+  background-image: url(/static/images/right_rose.png),
+    url(/static/images/left_rose.png), url(/static/images/blobs.png);
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-position: absolute;
+  background-size: cover;
 }
 
-
 .glass {
-  background: rgba(255, 255, 255, 0.50) !important;
+  background: rgba(255, 255, 255, 0.5) !important;
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);

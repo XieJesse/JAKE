@@ -27,7 +27,7 @@
 }
 
 #canvas-container {
-  background-color: rgba(255,255,255,1);
+  background-color: rgba(255, 255, 255, 1);
   justify-content: center;
   align-items: center;
   position: absolute;
@@ -39,7 +39,7 @@
 }
 
 #background {
-  background-color: rgba(255,255,255,0.6);
+  background-color: rgba(255, 255, 255, 0.6);
   display: flex;
   justify-content: center;
   position: absolute;
@@ -48,13 +48,6 @@
   left: 0;
   right: 0;
   margin: auto;
-}
-
-canvas {
-  width: 95%;
-  height: 95%;
-  position: absolute;
-  z-index: 1;
 }
 
 #content1 {
@@ -86,13 +79,12 @@ canvas {
 p {
   font-size: 50px;
   color: #ff8779;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .dragword {
-  margin: 1.5px 2px; 
+  margin: 1.5px 2px;
   border: 2px solid rgb(228, 228, 228);
-
 }
 
 .dragword:hover {
