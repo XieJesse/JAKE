@@ -59,6 +59,10 @@ def register():
                 url_valid = False
         if db.user_exists(username):
             return render_template("register.html", error="Username is already taken.")
+        elif len(username) < 6:
+            return render_template(
+                "register.html", error="Username must be at least 6 characters."
+            )
         elif password != repeat_password:
             return render_template(
                 "register.html", error="Password must be alphanumeric."
@@ -104,16 +108,16 @@ def profile():
                 user_posts = db.get_user_posts(username)
 
                 if (db.verify_user(session['username'], current_password) == 1):
-                    return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, error = "Current password inputted is incorrect.")
+                    return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, length = len(user_posts),error = "Current password inputted is incorrect.")
                 elif (new_password != repeat_password):
-                    return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, error = "Password must be alphanumeric.")
-                elif (len(password) < 8):
-                    return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, error = "Password must be at least 8 characters.")
-                elif not (password.isalnum):
-                    return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, error = "Passwords do not match.")
+                    return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, length = len(user_posts), error = "Password must be alphanumeric.")
+                elif (len(new_password) < 8):
+                    return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, length = len(user_posts), error = "Password must be at least 8 characters.")
+                elif not (new_password.isalnum):
+                    return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, length = len(user_posts), error = "Passwords do not match.")
                 else:
-                    change_user_password(username,new_password)
-                    return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, success = "Password has been successfully changed!")
+                    db.change_user_password(username,new_password)
+                    return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, length = len(user_posts), success = "Password has been successfully changed!")
             if (request.form['change'] == 'profile_picture'):
                 new_image_url = request.form['new_pfp']
                 username = session['username']
@@ -126,16 +130,16 @@ def profile():
                     url_valid = False
                 if (url_valid):
                     change_user_pfp(username,new_image_url)
-                    return render_template("profile.html", username = username, image_url = new_image_url, posts = user_posts, success = "Profile picture has been successfully changed!")
+                    return render_template("profile.html", username = username, image_url = new_image_url, posts = user_posts, length = len(user_posts), success = "Profile picture has been successfully changed!")
                 else:
-                    return render_template("profile.html", username = username, image_url = cur_image_url, posts = user_posts, error = "Image URL is not valid.")
+                    return render_template("profile.html", username = username, image_url = cur_image_url, posts = user_posts, length = len(user_posts), error = "Image URL is not valid.")
 
         else:
             username = session['username']
             image_url = db.get_user_pfp(username)
             user_posts = db.get_user_posts(username)
             print(user_posts)
-            return render_template("profile.html", username = username, image_url = image_url, posts = user_posts)
+            return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, length = len(user_posts))
 
 
 @app.route("/game", methods=["GET", "POST"])

@@ -5,6 +5,9 @@ Profile
 
 {% block content %}
     <br>
+    {{ error }}
+
+    {{ success }}
     <div class="container">
       <div class="row">
         <img src="{{ image_url }}" style="width: 65px; height: 65px; border-radius: 100px;"> </img>
@@ -23,8 +26,8 @@ Profile
     </div>
     <br>
     <form action="/profile" method="POST">
-
-      <input name="current_password" class="form-control" type="text" placeholder="Current Password">
+      <input type="hidden" name="change" value="password">
+      <input name="current_password" class="form-control" type="password" placeholder="Current Password">
       <br>
       <input name="new_password" class="form-control" type="password" placeholder="New Password"
       <br>
@@ -35,7 +38,7 @@ Profile
       <br>
     </form>
     <form action="/profile" method="POST">
-
+      <input type="hidden" name="change" value="profile_picture">
       <input name="new_pfp" class="form-control" type="text" placeholder="New Profile Picture URL"
       <br>
       <br>
