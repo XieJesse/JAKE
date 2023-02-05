@@ -1,142 +1,138 @@
 * {
-    box-sizing: border-box; 
-    padding: 0;
-    margin: 0;
-    font-family: 'Helvetica', 'Arial', sans-serif;
-    /* border: 1px solid red; */
-}
-
-html, body {
-    display: flex;
-    flex-direction: column;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Helvetica", "Arial", sans-serif;
+  /* border: 1px solid red; */
 }
 
 .container {
-    text-align: center;
+  text-align: center;
+  align-items: center;
 }
 
 #login {
-    transform: translate(0, 20vh);
+  transform: translate(0, 20vh);
 }
 
 #register {
-    transform: translate(0, 10vh);
+  transform: translate(0, 10vh);
 }
 
 .right {
-    display: flex;
-    flex-direction: column;
-    justify-content: right;
-    align-items: center;
-    object-fit: cover;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  align-items: center;
+  object-fit: cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .form-control {
-    border-radius: 20px !important;
+  border-radius: 20px !important;
 }
 
 .submit {
-    border-radius: 20px !important;
-    background: #f6c1bb !important;
-    border: #f6c1bb;
+  border-radius: 20px !important;
+  background: #f6c1bb !important;
+  border: #f6c1bb;
 }
 
 .submit:hover {
-    background-color: #ec6d7b !important;
+  background-color: #ec6d7b !important;
 }
 
 /* change color of Register button */
 .link:link {
-    color: #f6c1bb;
-    background-color: transparent;
-    text-decoration: none;
-  }
+  color: #f6c1bb;
+  background-color: transparent;
+  text-decoration: none;
+}
 .link:visited {
-    color: #ec6d7b;
-    background-color: transparent;
-    text-decoration: none;
-  }
+  color: #ec6d7b;
+  background-color: transparent;
+  text-decoration: none;
+}
 .link:hover {
-    color: #ec6d7b;
-    background-color: transparent;
-    text-decoration: underline;
-  }
+  color: #ec6d7b;
+  background-color: transparent;
+  text-decoration: underline;
+}
 .link:active {
-    color: #f6c1bb;
-    background-color: transparent;
-    text-decoration: underline;
-  }
+  color: #f6c1bb;
+  background-color: transparent;
+  text-decoration: underline;
+}
 
 .err {
-    color: #ec6d7b;
+  color: #ec6d7b;
 }
 
 /* Fade in Up */
 @keyframes fadeInUp {
-    from {
-        transform: translate3d(0,50vh,0)
-    }
+  from {
+    transform: translate3d(0, 50vh, 0);
+  }
 
-    to {
-        opacity: 1
-    }
+  to {
+    opacity: 1;
+  }
 }
 
 .animated {
-    animation-duration: 1s;
-    animation-fill-mode: both;
-    -webkit-animation-duration: 1s;
-    -webkit-animation-fill-mode: both
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
 }
 
 .animatedFadeInUp {
-    opacity: 0
+  opacity: 0;
 }
 
 .fadeInUp {
-    opacity: 0;
-    animation-name: fadeInUp;
-    -webkit-animation-name: fadeInUp;   
+  opacity: 0;
+  animation-name: fadeInUp;
+  -webkit-animation-name: fadeInUp;
 }
 
-/* end anim */ 
+/* end anim */
 
 .card {
-    border-radius: 20px !important;
-    box-shadow: 0 6px 20px 0 rgba(0,0,0,.15);
+  border-radius: 20px !important;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.15);
 }
 
 .card .desc {
-    color: #7f7f7f;
-    font-size: 15px;
+  color: #7f7f7f;
+  font-size: 15px;
 }
 
 .card {
-    background-color: #fff;
+  background-color: #fff;
 }
 
 .card:hover {
-    background-color: #f6c1bb;
-    -webkit-transition: background-color 1000ms linear;
-    -ms-transition: background-color 1000ms linear;
-    transition: background-color 1000ms linear;
+  background-color: #f6c1bb;
+  -webkit-transition: background-color 1000ms linear;
+  -ms-transition: background-color 1000ms linear;
+  transition: background-color 1000ms linear;
 }
 
 .card:hover .content {
-    font-size: 40px;
-    transition: all 1s;
+  font-size: 40px;
+  transition: all 1s;
 }
 
 .info {
-    width: 40px; 
-    height: 40px; 
-    border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
 }
 
 .content {
-    font-size: 35px;
+  font-size: 35px;
 }
