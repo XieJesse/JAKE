@@ -9,6 +9,23 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("clicked")
             this.classList.toggle('fa-regular');
             this.classList.toggle('fa-solid');
+            var data = [
+              {"method" : this.classList.contains('fa-solid')},
+              {"username" : posts[i].getElementsByClassName("name")[0].innerHTML.slice(13)},
+              {"content" : posts[i].getElementsByClassName("content")[0].innerHTML},
+              {"datetime" : posts[i].getElementsByClassName("time")[0].innerHTML.slice(10)}
+            ]
+            $.ajax({
+              type: "POST",
+              url: "/collection",
+              data: JSON.stringify(data),
+              contentType: "application/json",
+              dataType: 'json',
+              success: function(result) {
+                console.log("Result:");
+                console.log(result);
+              }
+            });
         }
 
         )

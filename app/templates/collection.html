@@ -16,13 +16,18 @@
         <div class="row">
           <img class="info" style="position: absolute; left: 2%"src="{{ post[4] }}" alt="Image">
           <p class="desc" style="position: absolute; left: 6%;">&nbsp wants to let you know...</p>
-          <p class="desc" style="font-size: 12px; position: absolute; right: 15px;">Posted on {{ post[3] }}</p>
+          <p class="desc time" style="font-size: 12px; position: absolute; right: 15px;">Posted on {{ post[3] }}</p>
       </div>
       <br>
         <p class="content">{{ post[1] }}</p>
-      <p class="desc">Yours truly, {{ post[0] }}</p>
+      <p class="desc name">Yours truly, {{ post[0] }}</p>
       </blockquote>
-      <i class="fa-heart fa-regular">&nbsp {{ post[2] }}</i>
+
+      {% if status %}
+        <i class="fa-heart fa-solid">&nbsp {{ post[2] }}</i>
+        {% else %}
+        <i class="fa-heart fa-regular">&nbsp {{ post[2] }}</i>
+      {% endif %}
       <br>
       <input class="btn btn-primary" type="submit" value="Copy">
     </div>
@@ -30,5 +35,6 @@
 <br>
   {% endfor %}
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="/static/js/collection.js"></script>
 {% endblock %}
