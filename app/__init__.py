@@ -169,11 +169,11 @@ def collection():
         user = db.get_user_pfp(session["username"])
     if (request.method == "POST" and "username" in session.keys()):
         json_data = request.get_json()
-        if (json_data[0]["method"] == True):
+        if (json_data[0]["method"]):
             post_id = db.get_post_id(json_data[1]["username"],json_data[2]["content"],json_data[3]["datetime"])
             db.add_upvoted_post(json_data[1]["username"],post_id)
             db.upvote(json_data[1]["username"],json_data[2]["content"],json_data[3]["datetime"])
-        elif (json_data[0]["method"] == False):
+        else:
             post_id = db.get_post_id(json_data[1]["username"],json_data[2]["content"],json_data[3]["datetime"])
             db.remove_upvoted_post(json_data[1]["username"],post_id)
             db.downvote(json_data[1]["username"],json_data[2]["content"],json_data[3]["datetime"])
