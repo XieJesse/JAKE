@@ -23,13 +23,19 @@ function allowDrop(ev) {
 }
 
 function drag(ev) {
-  ev.dataTransfer.setData("Text", ev.target.id);
+  ev.dataTransfer.setData("text/html", ev.target.id);
 }
 
 function drop(ev) {
-  ev.preventDefault();
-  var data = ev.dataTransfer.getData("text");
-  ev.target.appendChild(document.getElementById(data));
+  var _target = $("#" + ev.target.id);
+  var data = ev.dataTransfer.getData("text/html");
+  if ($(_target).hasClass("noDrop")) {
+    console.log("no transfer");
+    ev.preventDefault();
+  } else {
+    ev.preventDefault();
+    ev.target.appendChild(document.getElementById(data));
+  }
 }
 
 function sentence() {
