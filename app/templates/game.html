@@ -1,29 +1,37 @@
-{% extends 'base.html' %}
-{% block head %}
-{{ super() }}
-<link rel="stylesheet" href="{{ url_for('static', filename='/css/game.css') }}" />
-<link href="/static/css/landing.css" rel="stylesheet">
-{% endblock %}
-
-{% block background %}
-home-bg
-{%endblock%}
-
-{% block content %}
-<div id="canvas-container"> 
+{% extends 'base.html' %} {% block head %} {{ super() }}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='/css/game.css') }}"
+/>
+<link href="/static/css/landing.css" rel="stylesheet" />
+{% endblock %} {% block background %} home-bg {%endblock%} {% block content %}
+<div id="canvas-container">
   <canvas id="game"></canvas>
   <div id="content1">
-    <button type="button" class="btn btn-primary btn-lg" onclick="refresh()">Reroll</button>
     <div class="words" ondrop="drop(event)" ondragover="allowDrop(event)">
       {% for i in range(words|length) %}
-      <button id="drop{{i}}" name="{{words[i]}}" class="btn" draggable="true" ondragstart="drag(event)">
+      <button
+        id="drop{{i}}"
+        name="{{words[i]}}"
+        class="btn"
+        draggable="true"
+        ondragstart="drag(event)"
+      >
         {{words[i]}}
       </button>
       {% endfor %}
     </div>
     <div id="sentence" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-    <button onclick="sentence()" class="btn btn-secondary">Submit</button>
+    <div>
+      <button type="button" class="btn btn-secondary" onclick="refresh()">
+        Reroll
+      </button>
+      <button onclick="sentence()" class="btn btn-primary">Submit</button>
+    </div>
   </div>
 </div>
-<script type="text/javascript" src="{{ url_for('static', filename='js/game.js') }}"></script>
+<script
+  type="text/javascript"
+  src="{{ url_for('static', filename='js/game.js') }}"
+></script>
 {% endblock %}
