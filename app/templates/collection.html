@@ -11,6 +11,18 @@
 <br>
   <h1 style="color: #ff8779; font-family: 'Inter', sans-serif; text-align: center;">Collection</h1>
 <br>
+<div class="container">
+  <form action="/collection" method="POST">
+    <h3> Sort By: </h3>
+      <select id="filter-options">
+        <option value="Top"> Top </option>
+        <option value="Recent"> Recent </option>
+        <option value="Self"> Self </option>
+      </select>
+      <input type="submit">
+  </form>
+</div>
+<br>
 <div class="container" id="coll">
   {% for post in data %}
   <div class="card animated animatedFadeInUp fadeInUp">
@@ -21,7 +33,7 @@
           <p class="desc" style="position: absolute; left: 6%;">&nbsp wants to let you know...</p>
           <p class="desc time" style="font-size: 10px; position: absolute; right: 15px;">Posted on {{ post[3] }}</p>
       </div>
-      <br> 
+      <br>
         <p class="content"><strong>{{ post[1] }}</strong></p>
       <p class="desc name">Yours truly, {{ post[0] }}</p>
       </blockquote>

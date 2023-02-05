@@ -169,15 +169,21 @@ def collection():
         user = db.get_user_pfp(session["username"])
     if (request.method == "POST" and "username" in session.keys()):
         json_data = request.get_json()
-        if (json_data[0]["method"]):
+        if (json_data[0]["method"] == True):
             post_id = db.get_post_id(json_data[1]["username"],json_data[2]["content"],json_data[3]["datetime"])
             db.add_upvoted_post(json_data[1]["username"],post_id)
             db.upvote(json_data[1]["username"],json_data[2]["content"],json_data[3]["datetime"])
-        else:
+        elif (json_data[0]["method"] == False):
             post_id = db.get_post_id(json_data[1]["username"],json_data[2]["content"],json_data[3]["datetime"])
             db.remove_upvoted_post(json_data[1]["username"],post_id)
             db.downvote(json_data[1]["username"],json_data[2]["content"],json_data[3]["datetime"])
     data = db.get_ranked_posts()
+    if (request.method == "POST" and request.form["sort"] == "Recent"):
+        data = db.get_recent_posts()
+    if (request.method == "POST" and request.form["sort"] == "Top"):
+        data = db.get_ranked_posts()
+    if (request.method == "POST" and request.form["sort"] == "Self" and "username" in session.keys()):
+        data = db.get_user_posts(session["username"])
     new_data = []
     for post in data:
         status = False
