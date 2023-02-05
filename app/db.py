@@ -1,5 +1,5 @@
 import sqlite3
-import datetime
+from datetime import datetime
 
 MAIN_DB = "data.db"
 
@@ -29,7 +29,7 @@ def add_user(username,password,image_url):
 
 def add_post(user,content):
     print("done")
-    c.execute("INSERT INTO POSTS (USER,CONTENT,KARMA,DATETIME) VALUES (?,?,?,?)",(user,content,0,datetime.date.today().strftime("%d/%m/%Y %H:%M")))
+    c.execute("INSERT INTO POSTS (USER,CONTENT,KARMA,DATETIME) VALUES (?,?,?,?)",(user,content,0,datetime.now().strftime("%m/%d/%Y %H:%M")))
     database.commit()
 
 def user_exists(username):

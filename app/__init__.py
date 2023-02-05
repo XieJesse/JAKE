@@ -93,6 +93,8 @@ def profile():
                 username = session['username']
                 image_url = db.get_user_pfp(username)
                 user_posts = db.get_user_posts(username)
+                if ((len(user_posts)) > 3):
+                    user_posts = random.sample(user_posts,3)
                 if (db.verify_user(session['username'], current_password) == 1):
                     return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, error = "Current password inputted is incorrect.")
                 elif (new_password != repeat_password):
@@ -124,6 +126,9 @@ def profile():
             username = session['username']
             image_url = db.get_user_pfp(username)
             user_posts = db.get_user_posts(username)
+            if ((len(user_posts)) > 3):
+                user_posts = random.sample(user_posts,3)
+            print("test")
             return render_template("profile.html", username = username, image_url = image_url, posts = user_posts)
 
 
