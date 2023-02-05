@@ -155,6 +155,10 @@ def getdata():
         message = {"greeting": "Hello from Flask!"}
         return jsonify(message)  # serialize and use JSON headers
 
+@app.route("/reset")
+def reset():
+    return render_template("reset.html")
+
 def getWords():
     words = []
     with app.open_resource("static/data/vals.json") as f:
