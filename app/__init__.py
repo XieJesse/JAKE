@@ -178,12 +178,6 @@ def collection():
             db.remove_upvoted_post(json_data[1]["username"],post_id)
             db.downvote(json_data[1]["username"],json_data[2]["content"],json_data[3]["datetime"])
     data = db.get_ranked_posts()
-    if (request.method == "POST" and request.form["sort"] == "Recent"):
-        data = db.get_recent_posts()
-    if (request.method == "POST" and request.form["sort"] == "Top"):
-        data = db.get_ranked_posts()
-    if (request.method == "POST" and request.form["sort"] == "Self" and "username" in session.keys()):
-        data = db.get_user_posts(session["username"])
     new_data = []
     for post in data:
         status = False
