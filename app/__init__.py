@@ -59,6 +59,10 @@ def register():
                 url_valid = False
         if db.user_exists(username):
             return render_template("register.html", error="Username is already taken.")
+        elif len(username) < 6:
+            return render_template(
+                "register.html", error="Username must be at least 6 characters."
+            )
         elif password != repeat_password:
             return render_template(
                 "register.html", error="Password must be alphanumeric."
@@ -107,12 +111,12 @@ def profile():
                     return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, error = "Current password inputted is incorrect.")
                 elif (new_password != repeat_password):
                     return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, error = "Password must be alphanumeric.")
-                elif (len(password) < 8):
+                elif (len(new_password) < 8):
                     return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, error = "Password must be at least 8 characters.")
-                elif not (password.isalnum):
+                elif not (new_password.isalnum):
                     return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, error = "Passwords do not match.")
                 else:
-                    change_user_password(username,new_password)
+                    db.change_user_password(username,new_password)
                     return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, success = "Password has been successfully changed!")
             if (request.form['change'] == 'profile_picture'):
                 new_image_url = request.form['new_pfp']
