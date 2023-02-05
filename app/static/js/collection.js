@@ -7,16 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         button.addEventListener("click", function () {
             console.log("clicked")
-            if (button.classList.contains("fa-regular")) {
-				this.classList.remove("fa-regular");
-				this.classList.add("fa-solid");
-                console.log(button)
-            } 
-            else {
-                console.log("thumbs down to thumbs up");
-				this.classList.remove("fa-solid");
-				this.classList.add("fa-regular");
-            }
+            this.classList.toggle('fa-regular');
+            this.classList.toggle('fa-solid');
         })
         //console.log(posts[i]);
     }
