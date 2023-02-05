@@ -27,8 +27,9 @@ def add_user(username,password,image_url):
     c.execute("INSERT INTO USERS (USERNAME,PASSWORD,IMAGE_URL) VALUES (?,?,?)",(username,password,image_url))
     database.commit()
 
-def add_post(user,content,karma):
-    c.execute("INSERT INTO POSTS (USER,CONTENT,KARMA,DATETIME) VALUES (?,?,?,?)",(user,content,karma,datetime.now().strftime("%d/%m/%Y %H:%M")))
+def add_post(user,content):
+    print("done")
+    c.execute("INSERT INTO POSTS (USER,CONTENT,KARMA,DATETIME) VALUES (?,?,?,?)",(user,content,0,datetime.date.today().strftime("%d/%m/%Y %H:%M")))
     database.commit()
 
 def user_exists(username):
