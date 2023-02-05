@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
             var data = [
               {"method" : this.classList.contains('fa-solid')},
               {"username" : posts[i].getElementsByClassName("name")[0].innerHTML.slice(13)},
-              {"content" : posts[i].getElementsByClassName("content")[0].innerHTML.substring(8,posts[i].getElementsByClassName("content")[0].innerHTML.length-9)},
+              {"content" : posts[i].getElementsByClassName("content")[0].innerHTML.substring(9,posts[i].getElementsByClassName("content")[0].innerHTML.length-10)},
               {"datetime" : posts[i].getElementsByClassName("time")[0].innerHTML.slice(10)}
             ]
             $.ajax({
