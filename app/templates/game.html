@@ -18,7 +18,7 @@ home-bg
 {% block content %}
 <div id="background">
   <div id="container">
-    <p>dsdfkdslfjdsljflkdsjflksdjflkdjslkfjdslkfjldskjfldskjfldskj</p>
+    <p style="color: #fd5761;">Create your compliment</p>
   </div>
   <div id="canvas-container" class="shadow"> 
     <canvas id="game"></canvas>
@@ -33,8 +33,8 @@ home-bg
       <br>
       <div id="sentence" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
       <div>
-        <button type="button" class="btn btn-secondary" onclick="refresh()">Reroll</button>
-        <button onclick="sentence()" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-secondary" style="border-radius: 5px !important;"onclick="refresh()">Reroll</button>
+        <button onclick="sentence()" class="submit btn btn-primary" style="border-radius: 5px !important;">Submit</button>
       </div>
     </div>
   </div>

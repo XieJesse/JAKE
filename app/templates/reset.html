@@ -15,18 +15,19 @@ home-bg
 {% block content %}
 <div id="background">
     <div id="container">
-        <p>dsdfkdslfjdsljflkdsjflksdjflkdjslkfjdslkfjldskjfldskjfldskj</p>
+        <p style="color: #fd5761;">View your compliment</p>
     </div>
     <div id="canvas-container" class="shadow">
         <canvas id="game"></canvas>
         <div id="content1">
-            {% for i in range(10) %}
+            {% for i in range(5) %}
             <br />
             {% endfor %}
-            <button class="btn btn-secondary" onclick="copy()">Copy & Paste</button>
-            <a href="{{url_for('game')}}"><button class="btn btn-secondary">Try again</button></a>
-            <a href="{{url_for('collection')}}"><button class="btn btn-secondary">See what others are
-                    cooking</button></a>
+            <div class="row">
+                <button style="margin: 0px 8px;" class="btn btn-secondary" onclick="copy()">Copy</button>
+                <a style="margin: 0px 8px;" href="{{url_for('game')}}"><button class="btn btn-secondary">Retry</button></a>
+                <a style="margin: 0px 8px;" href="{{url_for('collection')}}"><button class="btn btn-secondary">See all</button></a>
+            </div>
         </div>
     </div>
 </div>
