@@ -115,20 +115,20 @@ html, body {
     font-size: 15px;
 }
 
+.card {
+    background-color: #fff;
+}
+
 .card:hover {
-    background-color: pink;
+    background-color: #f6c1bb;
+    -webkit-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    transition: background-color 1000ms linear;
 }
 
-.card-header {
-
-}
-
-.card-body {
-
-}
-
-.blockquote {
-
+.card:hover .content {
+    font-size: 40px;
+    transition: all 1s;
 }
 
 .info {
