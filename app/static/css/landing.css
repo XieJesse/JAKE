@@ -78,7 +78,7 @@
     margin-top: 2rem;
     padding: 1rem 2rem;
     border: 2px solid #fd5761;
-    border-radius: 5px;
+    border-radius: 20px;
     transition: all 0.3s ease-in-out;
 
     position: absolute;
@@ -109,3 +109,33 @@
     background-position: absolute;
     background-size: cover;
 }
+
+/* Fade in Up */
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0,10px,0)
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: both
+}
+
+.animatedFadeInUp {
+    opacity: 0
+}
+
+.fadeInUp {
+    opacity: 0;
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;   
+}
+
+/* end anim */ 
