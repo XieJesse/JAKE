@@ -103,5 +103,7 @@ p {
 
 #wordblock {
   justify-content: center;
-  display:block;
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
 }
