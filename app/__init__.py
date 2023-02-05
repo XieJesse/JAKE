@@ -148,6 +148,14 @@ def game():
 
 @app.route("/collection", methods=["GET", "POST"])
 def collection():
+    if request.method == "POST":
+        json_data = request.get_json()
+        if (json_data[0]["method"]):
+            print("upvoted")
+            db.upvote(json_data[1]["username"],json_data[2]["content"],json_data[3]["datetime"])
+        else:
+            print("downvoted")
+            db.downvote(json_data[1]["username"],json_data[2]["content"],json_data[3]["datetime"])
     data = db.get_ranked_posts()
     new_data = []
     for post in data:
