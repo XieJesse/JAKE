@@ -131,6 +131,7 @@ def profile():
                     db.change_user_password(username,new_password)
                     return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, length = len(user_posts), success = "Password has been successfully changed!")
             if (request.form['change'] == 'profile_picture'):
+                image_formats = ("image/png", "image/jpeg", "image/jpg")
                 new_image_url = request.form['new_pfp']
                 username = session['username']
                 cur_image_url = db.get_user_pfp(username)
@@ -141,7 +142,7 @@ def profile():
                 except:
                     url_valid = False
                 if (url_valid):
-                    change_user_pfp(username,new_image_url)
+                    db.change_user_pfp(username,new_image_url)
                     return render_template("profile.html", username = username, image_url = new_image_url, posts = user_posts, length = len(user_posts), success = "Profile picture has been successfully changed!")
                 else:
                     return render_template("profile.html", username = username, image_url = cur_image_url, posts = user_posts, length = len(user_posts), error = "Image URL is not valid.")
