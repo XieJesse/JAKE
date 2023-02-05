@@ -138,7 +138,6 @@ def profile():
             username = session['username']
             image_url = db.get_user_pfp(username)
             user_posts = db.get_user_posts(username)
-            print(user_posts)
             return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, length = len(user_posts))
 
 
