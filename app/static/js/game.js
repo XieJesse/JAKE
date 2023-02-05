@@ -8,6 +8,11 @@ function initialize() {
   c.height = window.innerHeight * 0.8;
   c.style.border = "1px solid";
   c.style.backgroundColor = "rgba(180, 171, 252, 0.5)";
+  if (sessionStorage["sentence"]) {
+    var sentence = document.getElementById("sentence");
+    sentence.innerHTML = sessionStorage["sentence"];
+  }
+
 }
 
 function allowDrop(ev) {
@@ -52,7 +57,15 @@ function sentence() {
       // Should be 'OK' if everything was successful
       console.log(text);
     });
+  sessionStorage.clear();
   window.location.replace("/reset");
+}
+
+function refresh() {
+  var sentence = document.getElementById("sentence");
+  var initial = sentence.innerHTML;
+  sessionStorage["sentence"] = initial;
+  window.location.replace("/game");
 }
 
 initialize();

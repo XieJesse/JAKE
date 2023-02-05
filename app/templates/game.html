@@ -31,9 +31,8 @@ home-bg
 {% block content %}
 <div id="canvas-container"> 
   <canvas id="game"></canvas>
-  <script type="text/javascript" src="{{ url_for('static', filename='js/game.js') }}"></script>
   <div id="content1">
-    <button type="button" class="btn btn-primary btn-lg">Reroll</button>
+    <button type="button" class="btn btn-primary btn-lg" onclick="refresh()">Reroll</button>
     <div class="words" ondrop="drop(event)" ondragover="allowDrop(event)">
       {% for i in range(words|length) %}
       <button id="drop{{i}}" name="{{words[i]}}" class="btn" draggable="true" ondragstart="drag(event)">
@@ -45,5 +44,5 @@ home-bg
     <button onclick="sentence()" class="btn btn-secondary">Submit</button>
   </div>
 </div>
-
+<script type="text/javascript" src="{{ url_for('static', filename='js/game.js') }}"></script>
 {% endblock %}
