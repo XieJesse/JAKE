@@ -25,31 +25,31 @@ Profile
           <h2>&nbsp  {{ username }} </h2>
         </div>
       <br>
-
+  
       <h3>Your sweetest compliments were</h3>
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="2875" >
         <div class="carousel-inner">
 
           {% if length == 1 %}
             <div class="carousel-item active">
-              <p class="d-block w-100" alt="First slide">{{ posts[0][1] }}</p>
+              <p class="d-block w-100" alt="First slide">{{ posts[0][2] }}</p>
             </div>
           {% elif length == 2 %}
               <div class="carousel-item active">
-              <p class="d-block w-100=" alt="First slide">{{ posts[0][1] }}</p>
+              <p class="d-block w-100=" alt="First slide">{{ posts[0][2] }}</p>
               </div>
               <div class="carousel-item">
-                <p class="d-block w-100"  alt="Second slide">{{ posts[1][1] }}</p>
+                <p class="d-block w-100"  alt="Second slide">{{ posts[1][2] }}</p>
               </div>
             {% elif length == 3 %}
               <div class="carousel-item active">
-              <p class="d-block w-100" alt="First slide">{{ posts[0][1] }}</p>
+              <p class="d-block w-100" alt="First slide">{{ posts[0][2] }}</p>
               </div>
               <div class="carousel-item">
-                <p class="d-block w-100" alt="Second slide">{{ posts[1][1] }}</p>
+                <p class="d-block w-100" alt="Second slide">{{ posts[1][2] }}</p>
               </div>
               <div class="carousel-item">
-                <p class="d-block w-100" alt="Third slide">{{ posts[2][1] }}</p>
+                <p class="d-block w-100" alt="Third slide">{{ posts[2][2] }}</p>
               </div>
             {% else %}
             <p>Create a post to get started!</p>
