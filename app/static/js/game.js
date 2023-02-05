@@ -6,7 +6,7 @@ function initialize() {
   ctx = c.getContext("2d");
   c.width = window.innerWidth * 0.64;
   c.height = window.innerHeight * 0.48;
-  c.style.backgroundColor = "rgba(255, 255, 255, 0.7)";
+  c.style.backgroundColor = "rgba(255, 255, 255, 0)";
   if (!("rolls" in sessionStorage)) {
     sessionStorage["rolls"] = 1;
   }

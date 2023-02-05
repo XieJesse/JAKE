@@ -4,7 +4,7 @@ Reset
 {% endblock %}
 {% block head %}
 {{ super() }}
-<link rel="stylesheet" href="{{ url_for('static', filename='/css/reset.css') }}"/>
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/reset.css') }}" />
 <link href="/static/css/landing.css" rel="stylesheet">
 {% endblock %}
 
@@ -13,20 +13,25 @@ home-bg
 {%endblock%}
 
 {% block content %}
-<div id="canvas-container">
-    <canvas id="game"></canvas>
-    <div id="content1">
-        {% for i in range(10) %}
-        <br/>
-        {% endfor %}
-        <button class="btn btn-secondary" onclick="copy()">Copy & Paste</button>
-        <a href="{{url_for('game')}}"><button class="btn btn-secondary">Try again</button></a>
-        <a href="{{url_for('collection')}}"><button class="btn btn-secondary">See what others are cooking</button></a>
+<div id="background">
+    <div id="container">
+        <p>dsdfkdslfjdsljflkdsjflksdjflkdjslkfjdslkfjldskjfldskjfldskj</p>
+    </div>
+    <div id="canvas-container" class="shadow">
+        <canvas id="game"></canvas>
+        <div id="content1">
+            {% for i in range(10) %}
+            <br />
+            {% endfor %}
+            <button class="btn btn-secondary" onclick="copy()">Copy & Paste</button>
+            <a href="{{url_for('game')}}"><button class="btn btn-secondary">Try again</button></a>
+            <a href="{{url_for('collection')}}"><button class="btn btn-secondary">See what others are
+                    cooking</button></a>
+        </div>
     </div>
 </div>
 
-<script
-    type="text/javascript"
-    src="{{ url_for('static', filename='js/reset.js') }}">
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/reset.js') }}">
 </script>
 {% endblock %}
