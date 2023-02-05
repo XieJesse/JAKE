@@ -62,8 +62,7 @@
 
 #sentence {
   width: 80%;
-  min-height: 16%;
-  padding: 5px;
+  padding: 10px;
   margin: 0px;
   border-radius: 9px;
   border: 1px solid black;
@@ -73,6 +72,8 @@
 p {
   font-family: Caveat;
   font-size: 24px;
+  padding: 0px;
+  margin: 0px;
 }
 
 h1 {
