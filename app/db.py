@@ -17,7 +17,8 @@ c.execute("""
     CREATE TABLE IF NOT EXISTS POSTS (
         USER    TEXT,
         CONTENT   TEXT,
-        KARMA    INTEGER
+        KARMA    INTEGER,
+        DATETIME    TEXT
     );""")
 
 database.commit()
