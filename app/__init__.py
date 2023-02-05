@@ -3,6 +3,7 @@ import requests
 import db
 import json
 import random
+import urllib
 from os import urandom, path
 
 app = Flask(__name__)
@@ -39,15 +40,23 @@ def register():
         repeat_password = request.form["repeat_password"]
         image_formats = ("image/png", "image/jpeg", "image/jpg")
         image_url = request.form["image_url"]
-        if image_url == "":
-            image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
         url_valid = True
-        try:
-            url_valid = (
-                requests.head(image_url).headers["content-type"] in image_formats
-            )
-        except:
-            url_valid = False
+        if image_url == "":
+            # random image from lorem picsum
+            req = urllib.request.Request('https://picsum.photos/v2/list?limit=1&page='+str(random.randint(0,993)), headers={'User-Agent': 'Mozilla/5.0'})
+            data = urllib.request.urlopen(req)
+            response = data.read()
+            response_info = json.loads(response)
+            name = "Image "+str(response_info[0]["id"])
+            image_url = response_info[0]["download_url"]
+            #image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
+        else:
+            try:
+                url_valid = (
+                    requests.head(image_url).headers["content-type"] in image_formats
+                )
+            except:
+                url_valid = False
         if db.user_exists(username):
             return render_template("register.html", error="Username is already taken.")
         elif password != repeat_password:
@@ -93,6 +102,8 @@ def profile():
                 username = session['username']
                 image_url = db.get_user_pfp(username)
                 user_posts = db.get_user_posts(username)
+                if ((len(user_posts)) > 3):
+                    user_posts = random.sample(user_posts,3)
                 if (db.verify_user(session['username'], current_password) == 1):
                     return render_template("profile.html", username = username, image_url = image_url, posts = user_posts, error = "Current password inputted is incorrect.")
                 elif (new_password != repeat_password):
@@ -124,6 +135,9 @@ def profile():
             username = session['username']
             image_url = db.get_user_pfp(username)
             user_posts = db.get_user_posts(username)
+            if ((len(user_posts)) > 3):
+                user_posts = random.sample(user_posts,3)
+            print("test")
             return render_template("profile.html", username = username, image_url = image_url, posts = user_posts)
 
 
