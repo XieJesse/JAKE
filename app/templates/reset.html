@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/landing.css') }}"/>
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/reset.css') }}"/>
+{% endblock %}
+
+{% block background %} 
+home-bg
+{%endblock%}
+
+{% block homebut %}
+0.8
+{% endblock homebut %}
+
+{% block aboutbut %}
+0.8
+{% endblock aboutbut %}
+
+{% block pokedexbut %}
+0.8
+{% endblock pokedexbut %}
+
+{% block content %}
+<canvas id="game"></canvas>
+<script
+    type="text/javascript"
+    src="{{ url_for('static', filename='js/reset.js') }}">
+</script>
+{% endblock %}

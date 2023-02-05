@@ -25,6 +25,7 @@ function drop(ev) {
   ev.target.appendChild(document.getElementById(data));
 }
 
+
 function sentence() {
   let sentence = "";
   var x = document.getElementById("sentence").children;
@@ -53,6 +54,7 @@ function sentence() {
       // Should be 'OK' if everything was successful
       console.log(text);
     });
+    window.location.replace("/reset");
 }
 
 initialize();
