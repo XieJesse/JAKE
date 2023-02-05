@@ -2,7 +2,7 @@ var c;
 var ctx;
 
 function initialize() {
-  c = document.getElementById("can");
+  c = document.getElementById("game");
   ctx = c.getContext("2d");
   c.width = window.innerWidth * 0.6;
   c.height = window.innerHeight * 0.8;
