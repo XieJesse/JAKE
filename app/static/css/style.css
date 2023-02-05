@@ -101,6 +101,10 @@
 
 /* end anim */
 
+.fa-solid {
+    color: #fd5761;
+  }
+
 .card {
   border-radius: 20px !important;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.15);
