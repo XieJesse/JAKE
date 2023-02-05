@@ -3,7 +3,9 @@
 {% block head %}
   <link href="/static/css/style.css" rel="stylesheet">
 {% endblock %}
-
+{% block background %}
+  blobs-bg
+{% endblock %}
 {% block content %}
 <br>
   <h1 style="text-align: center;">The Complimentory</h1>
@@ -29,7 +31,7 @@
         <i class="fa-heart fa-regular">&nbsp {{ post[2] }}</i>
       {% endif %}
       <br>
-      <input class="btn btn-primary" type="submit" value="Copy">
+      <input class="btn btn-primary" style="border: 1px solid #000; color: #000; background-color: transparent;" type="submit" value="Copy">
     </div>
   </div>
 <br>

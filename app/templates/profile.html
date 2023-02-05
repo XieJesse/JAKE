@@ -2,6 +2,14 @@
 {% block title %}
 Profile
 {% endblock %}
+{% block head %}
+<style>
+  #content {
+    background-color: rgba(255,255,255,0.6);
+    margin-top: 23px;
+  }
+</style>
+{% endblock %}
 {% block background %}
   blobs-bg
 {% endblock %}
@@ -18,7 +26,7 @@ Profile
         </div>
       <br>
 
-      <h3>Your sweetest compliments</h3>
+      <h3>Your sweetest compliments were</h3>
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="2875" >
         <div class="carousel-inner">
 
@@ -55,10 +63,10 @@ Profile
 
     <br>
     <br>
-    <hr>
+    <br>
     <br>
 
-    <div class="container animated animatedFadeInUp fadeInUp" style="border-radius: 20px; border: 2px solid #f6c1bb; max-width: 50%;">
+    <div class="container" style="box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.15); border-radius: 20px; border: 5px solid #ff8779; max-width: 50%; background-color: white;">
       <br>
       <h3>Update your profile</h3>
       <form action="/profile" method="POST">
