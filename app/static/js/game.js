@@ -7,7 +7,7 @@ function initialize() {
   c.width = window.innerWidth * 0.6;
   c.height = window.innerHeight * 0.8;
   c.style.border = "1px solid";
-  c.style.backgroundColor = "#B4ABFC";
+  c.style.backgroundColor = "rgba(180, 171, 252, 0.5)";
 }
 
 function allowDrop(ev) {
@@ -24,7 +24,6 @@ function drop(ev) {
   ev.target.appendChild(document.getElementById(data));
 }
 
-
 function sentence() {
   let sentence = "";
   var x = document.getElementById("sentence").children;
@@ -40,7 +39,7 @@ function sentence() {
 
     // A JSON payload
     body: JSON.stringify({
-      sentence: sentence
+      sentence: sentence,
     }),
   })
     .then(function (response) {
@@ -53,7 +52,7 @@ function sentence() {
       // Should be 'OK' if everything was successful
       console.log(text);
     });
-    window.location.replace("/reset");
+  window.location.replace("/reset");
 }
 
 initialize();
