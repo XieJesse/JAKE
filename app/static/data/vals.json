@@ -5,7 +5,6 @@
     "i",
     "me",
     "you",
-    "your",
     "your toes",
     "a beautiful sunset",
     "the moon",
@@ -25,7 +24,19 @@
     "without you",
     "your swagger",
     "your smile",
-    "your touch"
+    "your touch",
+    "a warm ocean breeze",
+    "your sense of style",
+    "the brightest star in the galaxy",
+    "your kindness",
+    "your laugh",
+    "your jokes",
+    "your creativity",
+    "the entire world",
+    "your voice",
+    "your scent",
+    "your eyebrows",
+    "my ambition"
   ],
   "isarephrase": [
     "absurd",
@@ -37,10 +48,17 @@
     "my one and only",
     "just perfect",
     "a national treasure",
-    "have a good time",
+    "having a good time",
     "gorgeous",
     "the best",
-    "sweet like sugar"
+    "sweet like sugar",
+    "brilliant in nature",
+    "super intelligent",
+    "better than a bowl of ice cream",
+    "in contention for a nobel prize",
+    "one of a kind",
+    "a work of art",
+    "not bad at all"
   ],
   "verbs": [
     "looks",
@@ -61,7 +79,12 @@
     "smell(s) like flowers",
     "take(s) my breath away",
     "lights up the room",
-    "make my heart skip a beat"
+    "make my heart skip a beat",
+    "has no limits",
+    "reminds me of",
+    "pales in comparison to",
+    "I think that",
+    "the entire world believes that"
   ],
 
   "endings": [
@@ -80,7 +103,9 @@
     "cupcake",
     "cheerio",
     "my little dumpling",
-    "felicia"
+    "felicia",
+    "my sweet buttercup",
+    "and I really mean it"
   ],
   "garunteed": ["and", "with", "for", "is", "are"]
 }
