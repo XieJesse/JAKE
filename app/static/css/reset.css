@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Caveat&display=swap");
 
 * {
   box-sizing: border-box;
@@ -18,11 +18,11 @@
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 45px;;
+  top: 45px;
   bottom: 45px;
   left: 0px;
   right: 0px;
-  margin:auto;
+  margin: auto;
 }
 
 canvas {
