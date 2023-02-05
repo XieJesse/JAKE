@@ -107,6 +107,5 @@
     background-image: url(/static/images/right_rose.png), url(/static/images/left_rose.png), url(/static/images/blobs.png);
     background-repeat: no-repeat, no-repeat, no-repeat;
     background-position: absolute;
-    background-repeat: no-repeat;
     background-size: cover;
 }
