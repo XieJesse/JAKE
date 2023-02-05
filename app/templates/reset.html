@@ -37,9 +37,9 @@ home-bg
     <canvas id="game"></canvas>
     <div id="content1">
         <button class="btn btn-secondary">Copy & Paste</button>
-        <button class="btn btn-secondary">Try Again</button>
+        <a href="{{url_for('game')}}"><button class="btn btn-secondary">Try Again</button></a>
         <button class="btn btn-secondary">Share</button>
-        <button class="btn btn-secondary">See What others are cooking</button>
+        <a href="{{url_for('collection')}}"><button class="btn btn-secondary">See What others are cooking</button></a>
     </div>
 </div>
 
